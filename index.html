@@ -35,23 +35,6 @@
       justify-content: center;
     }
 
-    body.light-theme {
-      --bg: #f3f4f6;
-      --bg-elevated: #e5e7eb;
-      --card: #ffffff;
-      --accent: #16a34a;
-      --accent-soft: rgba(22, 163, 74, 0.12);
-      --accent-strong: #15803d;
-      --danger: #dc2626;
-      --text-main: #0f172a;
-      --text-muted: #6b7280;
-      --border-soft: #d1d5db;
-      --tag-bg: #f9fafb;
-      --tag-border: #e5e7eb;
-      background: radial-gradient(circle at top, #e5e7eb 0, #f3f4f6 45%, #e5e7eb 100%);
-      color: var(--text-main);
-    }
-
     .app {
       width: 100%;
       max-width: 480px;
@@ -81,10 +64,25 @@
       color: var(--text-muted);
     }
 
-    .app-actions {
+    .settings-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
       display: flex;
       align-items: center;
-      gap: 6px;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      user-select: none;
+      padding: 0;
+    }
+
+    .settings-btn:active {
+      transform: scale(0.96);
+      background: #020617;
     }
 
     .nav-tabs {
@@ -94,10 +92,6 @@
       padding: 4px;
       border: 1px solid var(--border-soft);
       margin-bottom: 8px;
-    }
-
-    body.light-theme .nav-tabs {
-      background: rgba(243, 244, 246, 0.9);
     }
 
     .nav-tab {
@@ -127,15 +121,11 @@
     }
 
     .card {
-      background: linear-gradient(145deg, var(--card), var(--card));
+      background: linear-gradient(145deg, #020617, #020617);
       border-radius: 18px;
       padding: 14px 14px 12px;
       border: 1px solid var(--border-soft);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
-    }
-
-    body.light-theme .card {
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
     }
 
     .card-header {
@@ -207,17 +197,9 @@
         transform 0.05s ease;
     }
 
-    body.light-theme .btn {
-      background: #f9fafb;
-    }
-
     .btn:active {
       transform: scale(0.98);
       background: #020617;
-    }
-
-    body.light-theme .btn:active {
-      background: #e5e7eb;
     }
 
     .btn-primary {
@@ -230,10 +212,6 @@
     .btn-ghost {
       background: rgba(15, 23, 42, 0.95);
       color: var(--text-main);
-    }
-
-    body.light-theme .btn-ghost {
-      background: #f3f4f6;
     }
 
     .btn-small {
@@ -301,6 +279,7 @@
     }
 
     .tx-item,
+    .goal-item,
     .payment-item {
       padding: 6px 0;
       border-bottom: 1px dashed rgba(31, 41, 55, 0.9);
@@ -368,41 +347,12 @@
       color: var(--text-muted);
     }
 
-    body.light-theme .chip {
-      background: #f9fafb;
-    }
-
     .pill-small {
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 999px;
       background: rgba(34, 197, 94, 0.12);
       color: var(--accent);
-    }
-
-    /* Круговой прогресс для целей */
-
-    .circle-progress {
-      --progress: 0;
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      background:
-        radial-gradient(farthest-side, var(--bg) 68%, transparent 70%),
-        conic-gradient(var(--accent) calc(var(--progress) * 1%), #111827 0);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 500;
-      color: var(--text-main);
-      flex-shrink: 0;
-    }
-
-    body.light-theme .circle-progress {
-      background:
-        radial-gradient(farthest-side, #ffffff 68%, transparent 70%),
-        conic-gradient(var(--accent) calc(var(--progress) * 1%), #e5e7eb 0);
     }
 
     /* Forms (bottom sheet) */
@@ -424,7 +374,7 @@
     .sheet {
       width: 100%;
       max-width: 480px;
-      background: var(--bg);
+      background: #020617;
       border-radius: 18px 18px 0 0;
       border-top: 1px solid var(--border-soft);
       padding: 10px 14px 14px;
@@ -453,10 +403,6 @@
       cursor: pointer;
     }
 
-    body.light-theme .sheet-close {
-      background: #f9fafb;
-    }
-
     .field-group {
       margin-bottom: 8px;
     }
@@ -478,12 +424,6 @@
       padding: 7px 9px;
       font-size: 12px;
       outline: none;
-    }
-
-    body.light-theme .field-input,
-    body.light-theme .field-textarea,
-    body.light-theme .field-select {
-      background: #f9fafb;
     }
 
     .field-input:focus,
@@ -511,7 +451,7 @@
     /* Short goal schedule */
 
     .schedule-list {
-      max-height: 200px;
+      max-height: 160px;
       overflow-y: auto;
       padding-right: 2px;
       margin-top: 4px;
@@ -582,16 +522,12 @@
       white-space: nowrap;
     }
 
-    body.light-theme .sched-btn {
-      background: #f9fafb;
-    }
-
     .sched-btn-primary {
       border-color: var(--accent);
       color: var(--accent);
     }
 
-    /* Goals lists / containers */
+    /* Goals lists */
 
     .goal-type-pill {
       font-size: 10px;
@@ -601,10 +537,6 @@
       background: rgba(15, 23, 42, 0.95);
       color: var(--text-muted);
       white-space: nowrap;
-    }
-
-    body.light-theme .goal-type-pill {
-      background: #f9fafb;
     }
 
     .goal-type-pill[data-type="day"] {
@@ -656,10 +588,6 @@
       color: var(--text-main);
       padding: 6px 8px;
       resize: vertical;
-    }
-
-    body.light-theme .mono {
-      background: #f9fafb;
     }
 
     .mono:focus {
@@ -719,10 +647,6 @@
       margin: 3px 0;
     }
 
-    body.light-theme .day-bar {
-      background: #e5e7eb;
-    }
-
     .day-bar-fill {
       height: 100%;
       float: left;
@@ -743,10 +667,6 @@
       background: #020617;
       overflow: hidden;
       margin: 4px 0;
-    }
-
-    body.light-theme .progress-bar {
-      background: #e5e7eb;
     }
 
     .progress-bar-fill {
@@ -791,118 +711,29 @@
       cursor: pointer;
     }
 
-    body.light-theme .calendar-chip {
-      background: #f9fafb;
-    }
-
     .calendar-chip.selected {
       border-color: var(--danger);
       color: var(--danger);
       background: rgba(248, 113, 113, 0.12);
     }
 
-    /* Weekly groups and goal "boxes" */
-
-    .week-group {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 8px 10px;
-      margin-bottom: 8px;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    body.light-theme .week-group {
-      background: #f9fafb;
-    }
-
-    .week-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .week-toggle {
-      font-size: 14px;
-      opacity: 0.7;
-    }
-
-    .week-body {
-      margin-top: 6px;
-    }
-
-    .goal-box {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      background: rgba(15, 23, 42, 0.8);
-    }
-
-    body.light-theme .goal-box {
-      background: #ffffff;
-    }
-
-    .goal-box.done {
-      opacity: 0.5;
-    }
-
-    .goal-box-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-      font-size: 12px;
-    }
-
-    .goal-main-title {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .goal-main-title label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .goal-done-toggle {
-      accent-color: var(--accent);
-    }
-
-    /* Достижения */
-
-    .achievement-list {
-      margin-top: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
+    .achievements-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 4px 0 0;
+      font-size: 11px;
+      color: var(--text-muted);
     }
 
     .achievement-item {
-      padding: 6px 8px;
-      border-radius: 10px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.6);
-      font-size: 11px;
-    }
-
-    body.light-theme .achievement-item {
-      background: #f9fafb;
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(31, 41, 55, 0.7);
     }
 
     .achievement-title {
+      color: var(--text-main);
       font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .achievement-text {
-      font-size: 10px;
-      color: var(--text-muted);
+      font-size: 11px;
     }
   </style>
 </head>
@@ -913,10 +744,7 @@
         <div class="app-title">Core Tracker</div>
         <div class="app-subtitle">финансы · цели · дисциплина</div>
       </div>
-      <div class="app-actions">
-        <button class="btn btn-small btn-outline" id="btn-backup">экспорт / импорт</button>
-        <button class="btn btn-small btn-outline" id="btn-settings">⚙</button>
-      </div>
+      <button class="settings-btn" id="btn-backup" aria-label="настройки">⚙</button>
     </header>
 
     <nav class="nav-tabs">
@@ -943,18 +771,17 @@
     // ====== STATE & STORAGE ======
 
     const STORAGE_KEY = "core_tracker_state_v1";
-    const THEME_KEY = "core_tracker_theme_mode"; // auto | dark | light
 
     const defaultState = {
       balance: 0,
       transactions: [], // {id, type, amount, note, tags[], dateISO}
-      monthlyPayments: [], // {id,title,amount,dayOfMonth,description,tags[],priority,reserved}
-      shortGoals: [], // {id,title,amount,totalAmount,remaining,deadlineISO,createdISO,nonWorkingDates[],schedule:[{dateISO,planned,status}],tags[],priority,manualSaved}
-      goals: [] // {id,title,description,type,createdISO,deadlineISO|null,tags[],linkedShortGoalId|null,subtasks:[],done:false}
+      monthlyPayments: [], // {id,title,amount,dayOfMonth,description,tags[]}
+      shortGoals: [], // {id,title,amount,totalAmount,remaining,deadlineISO,createdISO,nonWorkingDates[], schedule:[{dateISO,planned,status}],tags[]}
+      goals: [], // {id,title,description,type,createdISO,deadlineISO|null,tags[],linkedShortGoalId|null,subtasks:[]}
+      allocations: [] // {id,goalType,goalId,amount,dateISO}
     };
 
     let state = loadState();
-    let themeMode = loadThemeMode(); // 'auto' | 'dark' | 'light'
 
     function loadState() {
       try {
@@ -963,22 +790,35 @@
         const parsed = JSON.parse(raw);
         const merged = { ...structuredClone(defaultState), ...parsed };
 
-        merged.shortGoals = (merged.shortGoals || []).map((g) => ({
-          nonWorkingDates: [],
-          priority: false,
-          manualSaved: 0,
-          ...g
-        }));
-        merged.monthlyPayments = (merged.monthlyPayments || []).map((p) => ({
-          priority: false,
-          reserved: 0,
-          ...p
-        }));
+        // ensure structures
+        merged.shortGoals = (merged.shortGoals || []).map((g) => {
+          const total =
+            typeof g.totalAmount === "number"
+              ? g.totalAmount
+              : typeof g.amount === "number"
+              ? g.amount
+              : typeof g.remaining === "number"
+              ? g.remaining
+              : 0;
+          const remaining =
+            typeof g.remaining === "number" ? g.remaining : total;
+          return {
+            nonWorkingDates: [],
+            schedule: [],
+            tags: [],
+            ...g,
+            totalAmount: total,
+            remaining
+          };
+        });
+
         merged.goals = (merged.goals || []).map((g) => ({
           subtasks: [],
-          done: false,
           ...g
         }));
+
+        merged.allocations = merged.allocations || [];
+
         return merged;
       } catch (e) {
         console.error("Failed to load state", e);
@@ -990,37 +830,6 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
       render();
     }
-
-    function loadThemeMode() {
-      try {
-        const val = localStorage.getItem(THEME_KEY);
-        if (val === "dark" || val === "light" || val === "auto") return val;
-      } catch (e) {}
-      return "auto";
-    }
-
-    function saveThemeMode(mode) {
-      themeMode = mode;
-      localStorage.setItem(THEME_KEY, mode);
-      applyTheme();
-    }
-
-    function systemPrefersDark() {
-      return (
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-      );
-    }
-
-    function applyTheme() {
-      let effective = themeMode;
-      if (effective === "auto") {
-        effective = systemPrefersDark() ? "dark" : "light";
-      }
-      document.body.classList.toggle("light-theme", effective === "light");
-    }
-
-    applyTheme();
 
     // ====== UTILITIES ======
 
@@ -1034,13 +843,6 @@
       const day = String(d.getDate()).padStart(2, "0");
       const month = String(d.getMonth() + 1).padStart(2, "0");
       return `${day}.${month}`;
-    }
-
-    function weekdayShort(dateISO) {
-      const d = new Date(dateISO);
-      const day = d.getDay(); // 0-6
-      const map = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
-      return map[day] || "";
     }
 
     function todayISO() {
@@ -1057,7 +859,11 @@
 
     function tagsToHTML(tags) {
       if (!tags || !tags.length) return "";
-      return tags.map((t) => `<span class="chip">#${t}</span>`).join("");
+      return (
+        `<div class="chip-row">` +
+        tags.map((t) => `<span class="chip">#${t}</span>`).join("") +
+        `</div>`
+      );
     }
 
     function compareDateISO(a, b) {
@@ -1072,30 +878,26 @@
       return d.toISOString().slice(0, 10);
     }
 
-    function getWeekKey(dateISO) {
+    function weekdayShort(dateISO) {
       const d = new Date(dateISO);
-      const year = d.getFullYear();
-      const oneJan = new Date(year, 0, 1);
-      const diff = d - oneJan;
-      const day = Math.floor(diff / (1000 * 60 * 60 * 24)) + oneJan.getDay();
-      const week = Math.floor(day / 7) + 1;
-      return `${year}-W${String(week).padStart(2, "0")}`;
+      if (Number.isNaN(d.getTime())) return "";
+      const idx = d.getDay(); // 0 = вс
+      const map = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+      return map[idx] || "";
     }
 
-    function weekLabelFromKey(key) {
-      const [yearPart, weekPart] = key.split("-W");
-      const year = parseInt(yearPart, 10) || new Date().getFullYear();
-      const week = parseInt(weekPart, 10) || 1;
-      const firstJan = new Date(year, 0, 1);
-      const start = new Date(firstJan.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
-      const end = new Date(start.getTime() + 6 * 24 * 60 * 60 * 1000);
-      const startLabel = `${String(start.getDate()).padStart(2, "0")}.${String(
-        start.getMonth() + 1
-      ).padStart(2, "0")}`;
-      const endLabel = `${String(end.getDate()).padStart(2, "0")}.${String(
-        end.getMonth() + 1
-      ).padStart(2, "0")}`;
-      return `Неделя ${startLabel}–${endLabel}`;
+    // allocations
+    function allocationsFor(goalType, goalId) {
+      return (state.allocations || []).filter(
+        (a) => a.goalType === goalType && a.goalId === goalId
+      );
+    }
+
+    function allocatedTotal(goalType, goalId) {
+      return allocationsFor(goalType, goalId).reduce(
+        (sum, a) => sum + (a.amount || 0),
+        0
+      );
     }
 
     // schedule generator
@@ -1121,14 +923,34 @@
       }));
     }
 
+    // progress helpers
+    function shortGoalProgressPercent(g) {
+      if (!g || !g.totalAmount) return 0;
+      const done = g.totalAmount - g.remaining;
+      return Math.min(100, Math.max(0, Math.round((done / g.totalAmount) * 100)));
+    }
+
+    function monthlyPaymentProgressPercent(p) {
+      if (!p || !p.amount) return 0;
+      const alloc = allocatedTotal("monthly", p.id);
+      return Math.min(100, Math.max(0, Math.round((alloc / p.amount) * 100)));
+    }
+
+    function taskGoalProgressPercent(goal) {
+      const subs = goal.subtasks || [];
+      if (!subs.length) return 0;
+      const done = subs.filter((s) => s.done).length;
+      return Math.round((done / subs.length) * 100);
+    }
+
     // ====== ANALYTICS HELPERS ======
 
     function computeFinanceAnalytics() {
       const today = todayISO();
       const [y, m] = today.split("-");
       const monthPrefix = `${y}-${m}`;
-      const txMonth = state.transactions.filter((tx) =>
-        tx.dateISO && tx.dateISO.startsWith(monthPrefix)
+      const txMonth = state.transactions.filter(
+        (tx) => tx.dateISO && tx.dateISO.startsWith(monthPrefix)
       );
 
       let monthIncome = 0;
@@ -1156,7 +978,6 @@
       const todayDate = new Date(today);
       const todayDay = todayDate.getDate();
       const upcomingPayments = state.monthlyPayments.filter((p) => {
-        // простой вариант — как было, по дням месяца
         return p.dayOfMonth >= todayDay && p.dayOfMonth <= todayDay + 3;
       });
 
@@ -1299,77 +1120,19 @@
       };
     }
 
-    function computeAchievements() {
-      const fin = computeFinanceAnalytics();
-      const goals = computeGoalsAnalytics();
-      const achievements = [];
-
-      if (state.transactions.length >= 1) {
-        achievements.push({
-          id: "first_tx",
-          title: "Первый шаг",
-          text: "Ты добавил первую финансовую операцию. Дальше будет проще."
-        });
-      }
-
-      if (fin.currentStreak >= 3) {
-        achievements.push({
-          id: "streak3",
-          title: "Серия 3 дня",
-          text: "Три дня подряд ты следишь за деньгами. Уже лучше, чем вчера."
-        });
-      }
-
-      if (fin.currentStreak >= 7) {
-        achievements.push({
-          id: "streak7",
-          title: "Недельный спринт",
-          text: "Неделя учёта без провалов. Это уже стиль жизни."
-        });
-      }
-
-      if (fin.completedShort >= 1) {
-        achievements.push({
-          id: "short1",
-          title: "Первая цель закрыта",
-          text: "Ты полностью закрыл одну краткосрочную финансовую цель."
-        });
-      }
-
-      const doneGoalsCount = state.goals.filter((g) => g.done).length;
-      if (doneGoalsCount >= 1) {
-        achievements.push({
-          id: "goal1",
-          title: "Цель выполнена",
-          text: "Хотя бы одну задачу ты довёл до конца. Это важно."
-        });
-      }
-
-      if (goals.doneSubtasks >= 5) {
-        achievements.push({
-          id: "micro5",
-          title: "Микрошаги",
-          text: "Больше 5 микроцелей закрыто. Мелочи складываются в результат."
-        });
-      }
-
-      return achievements;
-    }
-
     // ====== RENDER ROOT ======
 
     let activeTab = "finance";
     let analyticsMode = "finance"; // finance | goals
-    const contentEl = document.getElementById("content");
 
-    const expandedWeeks = {};
+    const contentEl = document.getElementById("content");
 
     function render() {
       if (activeTab === "finance") {
         renderFinance();
       } else if (activeTab === "goals") {
         renderGoals();
-      } else if (activeTab === "analytics") {
+      } else {
         renderAnalytics();
       }
     }
@@ -1382,6 +1145,7 @@
       const today = todayISO();
       const todayDate = new Date(today);
 
+      // Balance card (на руках)
       const balanceCard = document.createElement("section");
       balanceCard.className = "card";
       balanceCard.innerHTML = `
@@ -1394,31 +1158,20 @@
                 на руках
               </span>
             </div>
-            <div class="card-subtitle">ежедневный учёт доходов и расходов</div>
+            <div class="card-subtitle">текущие свободные деньги</div>
           </div>
           <button class="btn btn-small btn-outline" id="btn-set-balance">править</button>
         </div>
-
-        <div class="field-group" style="margin-bottom:6px;">
-          <div class="field-label">На руках сейчас</div>
-          <div class="balance-value">${state.balance.toLocaleString("ru-RU")} ₽</div>
-          <div class="balance-label">баланс можно изменить вручную или через операции</div>
-        </div>
-
-        <div class="section-title">
-          <span>Операции</span>
-        </div>
-        <div class="btn-row" style="margin-top:4px;">
+        <div class="balance-value">${state.balance.toLocaleString("ru-RU")} ₽</div>
+        <div class="balance-label">можно изменить баланс напрямую или через операции</div>
+        <div class="btn-row">
           <button class="btn btn-primary" id="btn-add-income">+ доход</button>
           <button class="btn btn-ghost" id="btn-add-expense">− расход</button>
         </div>
-        <div class="list" id="tx-list"></div>
-
-        <div class="section-title" style="margin-top:8px;">
-          <span>Свободные → цели</span>
-          <span class="small-inline">распределение денег на фин. задачи</span>
+        <div class="section-title">
+          <span>История</span>
         </div>
-        <div class="list" id="free-list"></div>
+        <div class="list" id="tx-list"></div>
       `;
       contentEl.appendChild(balanceCard);
 
@@ -1435,87 +1188,20 @@
             <div class="tx-item">
               <div class="tx-main">
                 <span>${tx.note || "(без описания)"}</span>
-                <span class="tx-amount ${tx.type}">${
-              tx.type === "income" ? "+" : "−"
-            }${tx.amount.toLocaleString("ru-RU")} ₽</span>
+                <span class="tx-amount ${tx.type}">
+                  ${tx.type === "income" ? "+" : "−"}${tx.amount.toLocaleString(
+              "ru-RU"
+            )} ₽
+                </span>
               </div>
               <div class="tx-meta">
                 <span>${formatDate(tx.dateISO)}</span>
-                <span>${tx.tags && tx.tags.length ? tx.tags.join(", ") : ""}</span>
-              </div>
-              <div class="chip-row">
-                <button class="btn btn-small btn-outline" data-delete-tx="${tx.id}">удалить</button>
+                <button class="btn btn-small btn-outline" data-del-tx="${
+                  tx.id
+                }">удалить</button>
               </div>
             </div>
           `;
-          })
-          .join("");
-      }
-
-      // блок "Свободные → цели"
-      const freeListEl = balanceCard.querySelector("#free-list");
-      const freeItems = [];
-
-      // ежемесячные
-      state.monthlyPayments.forEach((p) => {
-        const reserved = p.reserved || 0;
-        const total = p.amount;
-        const remaining = Math.max(0, total - reserved);
-        const progress = total > 0 ? Math.round((reserved / total) * 100) : 0;
-        freeItems.push({
-          id: p.id,
-          type: "monthly",
-          title: `Ежемесячная · ${p.title}`,
-          collected: reserved,
-          total,
-          remaining,
-          progress
-        });
-      });
-
-      // краткосрочные
-      state.shortGoals.forEach((g) => {
-        const total = g.totalAmount || g.amount || 0;
-        const remaining = Math.max(0, g.remaining ?? total);
-        const collected = Math.max(0, total - remaining);
-        const progress = total > 0 ? Math.round((collected / total) * 100) : 0;
-        freeItems.push({
-          id: g.id,
-          type: "short",
-          title: `Краткосрочная · ${g.title}`,
-          collected,
-          total,
-          remaining,
-          progress
-        });
-      });
-
-      if (!freeItems.length) {
-        freeListEl.innerHTML = `<div class="empty">нет финансовых целей для распределения</div>`;
-      } else {
-        freeListEl.innerHTML = freeItems
-          .map((item) => {
-            return `
-              <div class="tx-item">
-                <div class="tx-main">
-                  <div style="display:flex;align-items:center;gap:8px;">
-                    <div class="circle-progress" style="--progress:${item.progress};">
-                      <span>${item.progress}</span>
-                    </div>
-                    <span>${item.title}</span>
-                  </div>
-                  <span class="tx-amount income">${item.collected.toLocaleString("ru-RU")} ₽</span>
-                </div>
-                <div class="tx-meta">
-                  <span>собрано / нужно: ${item.collected.toLocaleString("ru-RU")} / ${item.total.toLocaleString("ru-RU")} ₽</span>
-                  <span>осталось: ${item.remaining.toLocaleString("ru-RU")} ₽</span>
-                </div>
-                <div class="chip-row">
-                  <button class="btn btn-small btn-outline" data-alloc-id="${item.id}" data-alloc-type="${item.type}">распределить</button>
-                  <button class="btn btn-small btn-outline" data-alloc-cancel-id="${item.id}" data-alloc-type="${item.type}">отменить</button>
-                </div>
-              </div>
-            `;
           })
           .join("");
       }
@@ -1540,35 +1226,36 @@
         paymentsListEl.innerHTML =
           '<div class="empty">пока нет ежемесячных целей</div>';
       } else {
-        const sorted = [...state.monthlyPayments].sort((a, b) => {
-          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
-          if (b.amount !== a.amount) return b.amount - a.amount;
-          return a.dayOfMonth - b.dayOfMonth;
-        });
+        const sorted = [...state.monthlyPayments].sort(
+          (a, b) => a.dayOfMonth - b.dayOfMonth
+        );
         paymentsListEl.innerHTML = sorted
           .map((p) => {
-            let dueDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), p.dayOfMonth);
+            let dueDate = new Date(
+              todayDate.getFullYear(),
+              todayDate.getMonth(),
+              p.dayOfMonth
+            );
             if (dueDate < todayDate) {
-              dueDate = new Date(todayDate.getFullYear(), todayDate.getMonth() + 1, p.dayOfMonth);
+              dueDate = new Date(
+                todayDate.getFullYear(),
+                todayDate.getMonth() + 1,
+                p.dayOfMonth
+              );
             }
             const diffMs = dueDate - todayDate;
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-            const diffLabel =
-              diffDays === 0
-                ? "сегодня"
-                : diffDays > 0
-                ? `через ${diffDays} дн.`
-                : "";
-            const reserved = p.reserved || 0;
-            const total = p.amount;
-            const remaining = Math.max(0, total - reserved);
-            const progress = total > 0 ? Math.round((reserved / total) * 100) : 0;
+
+            const alloc = allocatedTotal("monthly", p.id);
+            const remaining = Math.max(p.amount - alloc, 0);
+            const perc = monthlyPaymentProgressPercent(p);
+
             return `
             <div class="payment-item">
               <div class="tx-main">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div class="circle-progress" style="--progress:${progress};">
-                    <span>${progress}</span>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:
+                    conic-gradient(var(--accent) ${perc}%, rgba(255,255,255,0.1) ${perc}%);">
                   </div>
                   <span>${p.title}</span>
                 </div>
@@ -1578,26 +1265,20 @@
               </div>
               <div class="tx-meta">
                 <span>${p.dayOfMonth}-го числа${
-              diffLabel ? ", " + diffLabel : ""
+              diffDays === 0
+                ? ", сегодня"
+                : diffDays > 0
+                ? `, через ${diffDays} дн.`
+                : ""
             }</span>
-                <span>собрано: ${reserved.toLocaleString("ru-RU")} ₽</span>
+                <span>собрано ${alloc.toLocaleString(
+                  "ru-RU"
+                )} / ${p.amount.toLocaleString("ru-RU")} ₽ · осталось ${remaining.toLocaleString(
+              "ru-RU"
+            )} ₽</span>
               </div>
-              ${
-                p.description
-                  ? `<div class="muted">${p.description}</div>`
-                  : ""
-              }
-              <div class="chip-row">
-                ${
-                  p.priority
-                    ? '<span class="pill-small">приоритет</span>'
-                    : ""
-                }
-                ${tagsToHTML(p.tags)}
-                <button class="btn btn-small btn-outline" data-delete-monthly="${
-                  p.id
-                }">удалить</button>
-              </div>
+              ${p.description ? `<div class="muted">${p.description}</div>` : ""}
+              ${tagsToHTML(p.tags)}
             </div>
           `;
           })
@@ -1624,34 +1305,22 @@
         shortListEl.innerHTML =
           '<div class="empty">краткосрочных целей пока нет</div>';
       } else {
-        const sorted = [...state.shortGoals].sort((a, b) => {
-          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
-          const cmpDeadline = compareDateISO(a.deadlineISO, b.deadlineISO);
-          if (cmpDeadline !== 0) return cmpDeadline;
-          return a.createdISO < b.createdISO ? 1 : -1;
-        });
-        shortListEl.innerHTML = sorted
+        const sortedShort = [...state.shortGoals].sort((a, b) =>
+          compareDateISO(a.deadlineISO, b.deadlineISO)
+        );
+        shortListEl.innerHTML = sortedShort
           .map((g) => {
             const daysLeft =
               (new Date(g.deadlineISO) - todayDate) /
               (1000 * 60 * 60 * 24);
-            const pendingCount = g.schedule.filter(
-              (d) => d.status === "pending"
-            ).length;
-            const perDay =
-              pendingCount > 0 ? g.remaining / pendingCount : 0;
-
-            const total = g.totalAmount || g.amount || 0;
-            const remaining = Math.max(0, g.remaining ?? total);
-            const collected = Math.max(0, total - remaining);
-            const progress = total > 0 ? Math.round((collected / total) * 100) : 0;
-
+            const perc = shortGoalProgressPercent(g);
+            const done = g.totalAmount - g.remaining;
             return `
             <div class="goal-item">
               <div class="tx-main">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div class="circle-progress" style="--progress:${progress};">
-                    <span>${progress}</span>
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:
+                    conic-gradient(var(--accent) ${perc}%, rgba(255,255,255,0.1) ${perc}%);">
                   </div>
                   <span>${g.title}</span>
                 </div>
@@ -1667,24 +1336,114 @@
                     : "дедлайн прошёл"
                 }</span>
               </div>
+              <div class="small-inline">
+                прогресс: ${done.toLocaleString("ru-RU")} / ${g.totalAmount.toLocaleString(
+              "ru-RU"
+            )} ₽ (${perc}%)
+              </div>
               <div class="chip-row">
-                <span class="pill-small">план в день ~ ${perDay.toFixed(
-                  0
-                )} ₽</span>
-                ${
-                  g.priority
-                    ? '<span class="pill-small">приоритет</span>'
-                    : ""
-                }
+                <span class="pill-small">план в день ~ ${(
+                  g.remaining /
+                  Math.max(
+                    1,
+                    g.schedule.filter((d) => d.status === "pending").length
+                  )
+                ).toFixed(0)} ₽</span>
                 <button class="btn btn-small btn-outline" data-open-goal="${
                   g.id
                 }">расписание</button>
-                <button class="btn btn-small btn-outline" data-delete-short="${
-                  g.id
-                }">удалить</button>
               </div>
-              <div class="chip-row">
-                ${tagsToHTML(g.tags)}
+              ${tagsToHTML(g.tags)}
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      // Свободные деньги: распределение
+      const spareCard = document.createElement("section");
+      spareCard.className = "card";
+      spareCard.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Свободные деньги</div>
+            <div class="card-subtitle">распределение на фин. цели</div>
+          </div>
+        </div>
+        <div class="list" id="spare-list"></div>
+      `;
+      contentEl.appendChild(spareCard);
+
+      const spareListEl = spareCard.querySelector("#spare-list");
+
+      function collectFinGoals() {
+        const arr = [];
+        state.shortGoals.forEach((g) => arr.push({ kind: "short", goal: g }));
+        state.monthlyPayments.forEach((g) =>
+          arr.push({ kind: "monthly", goal: g })
+        );
+        return arr;
+      }
+
+      const finGoals = collectFinGoals();
+
+      if (!finGoals.length) {
+        spareListEl.innerHTML = `<div class="empty">пока нет финансовых целей для распределения</div>`;
+      } else {
+        spareListEl.innerHTML = finGoals
+          .map(({ kind, goal }) => {
+            let perc = 0;
+            let collected = 0;
+            let target = 0;
+            let lineInfo = "";
+
+            if (kind === "short") {
+              perc = shortGoalProgressPercent(goal);
+              collected = goal.totalAmount - goal.remaining;
+              target = goal.totalAmount;
+              const alloc = allocatedTotal("short", goal.id);
+              lineInfo = `по плану собрано ${collected.toLocaleString(
+                "ru-RU"
+              )} / ${target.toLocaleString(
+                "ru-RU"
+              )} ₽ · из баланса выделено ${alloc.toLocaleString("ru-RU")} ₽`;
+            } else {
+              perc = monthlyPaymentProgressPercent(goal);
+              const alloc = allocatedTotal("monthly", goal.id);
+              collected = alloc;
+              target = goal.amount;
+              const remaining = Math.max(target - collected, 0);
+              lineInfo = `собрано ${collected.toLocaleString(
+                "ru-RU"
+              )} / ${target.toLocaleString(
+                "ru-RU"
+              )} ₽ · осталось ${remaining.toLocaleString("ru-RU")} ₽`;
+            }
+
+            const goalTypeForAttr = kind === "short" ? "short" : "monthly";
+
+            return `
+            <div class="payment-item">
+              <div class="tx-main">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:
+                    conic-gradient(var(--accent) ${perc}%, rgba(255,255,255,0.1) ${perc}%);">
+                  </div>
+                  <span>${goal.title}</span>
+                </div>
+                <span class="tx-amount income">${Math.max(
+                  0,
+                  collected
+                ).toLocaleString("ru-RU")} ₽</span>
+              </div>
+              <div class="small-inline">${lineInfo}</div>
+              <div class="chip-row" style="margin-top:4px;">
+                <button class="btn btn-small btn-outline" data-alloc="${
+                  goal.id
+                }" data-alloc-type="${goalTypeForAttr}">+ выделить</button>
+                <button class="btn btn-small" data-undo-alloc="${
+                  goal.id
+                }" data-alloc-type="${goalTypeForAttr}">отменить</button>
               </div>
             </div>
           `;
@@ -1692,7 +1451,7 @@
           .join("");
       }
 
-      // handlers
+      // Attach handlers
       balanceCard
         .querySelector("#btn-add-income")
         .addEventListener("click", () => openTxSheet("income"));
@@ -1703,167 +1462,58 @@
         .querySelector("#btn-set-balance")
         .addEventListener("click", () => openBalanceSheet());
 
-      txListEl.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-delete-tx]");
-        if (!btn) return;
-        const id = btn.getAttribute("data-delete-tx");
-        const tx = state.transactions.find((t) => t.id === id);
-        if (!tx) return;
-        if (!confirm("Удалить эту транзакцию и откатить баланс?")) return;
-        if (tx.type === "income") {
-          state.balance -= tx.amount;
-        } else {
-          state.balance += tx.amount;
-        }
-        state.transactions = state.transactions.filter((t) => t.id !== id);
-        saveState();
-      });
-
-      freeListEl.addEventListener("click", (e) => {
-        const allocBtn = e.target.closest("[data-alloc-id]");
-        if (allocBtn) {
-          const id = allocBtn.getAttribute("data-alloc-id");
-          const type = allocBtn.getAttribute("data-alloc-type");
-          openAllocationSheet(type, id);
-          return;
-        }
-        const cancelBtn = e.target.closest("[data-alloc-cancel-id]");
-        if (cancelBtn) {
-          const id = cancelBtn.getAttribute("data-alloc-cancel-id");
-          const type = cancelBtn.getAttribute("data-alloc-type");
-          cancelAllocation(type, id);
-          return;
-        }
-      });
-
       paymentsCard
         .querySelector("#btn-add-monthly")
         .addEventListener("click", () => openMonthlySheet());
-      paymentsCard.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-delete-monthly]");
-        if (!btn) return;
-        const id = btn.getAttribute("data-delete-monthly");
-        if (!id) return;
-        if (!confirm("Удалить этот платёж?")) return;
-        state.monthlyPayments = state.monthlyPayments.filter((p) => p.id !== id);
-        saveState();
-      });
-
       goalsCard
         .querySelector("#btn-add-short-goal")
         .addEventListener("click", () => openShortGoalSheet());
-      goalsCard.addEventListener("click", (e) => {
-        const openBtn = e.target.closest("[data-open-goal]");
-        if (openBtn) {
-          const id = openBtn.getAttribute("data-open-goal");
+
+      goalsCard.querySelectorAll("[data-open-goal]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-open-goal");
           const goal = state.shortGoals.find((g) => g.id === id);
           if (goal) openShortGoalScheduleSheet(goal);
-          return;
-        }
-        const delBtn = e.target.closest("[data-delete-short]");
-        if (delBtn) {
-          const id = delBtn.getAttribute("data-delete-short");
-          if (!id) return;
-          if (!confirm("Удалить эту краткосрочную цель?")) return;
-          state.shortGoals = state.shortGoals.filter((g) => g.id !== id);
-          state.goals.forEach((goal) => {
-            if (goal.linkedShortGoalId === id) {
-              goal.linkedShortGoalId = null;
-            }
-          });
+        });
+      });
+
+      // delete tx
+      txListEl?.querySelectorAll("[data-del-tx]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-del-tx");
+          const tx = state.transactions.find((t) => t.id === id);
+          if (!tx) return;
+          if (tx.type === "income") state.balance -= tx.amount;
+          else state.balance += tx.amount;
+          state.transactions = state.transactions.filter((t) => t.id !== id);
           saveState();
-        }
+        });
       });
-    }
 
-    function openAllocationSheet(type, id) {
-      const today = todayISO();
-      let title = "";
-      let maxForGoal = 0;
-
-      if (type === "monthly") {
-        const p = state.monthlyPayments.find((x) => x.id === id);
-        if (!p) return;
-        title = `Распределить на "${p.title}"`;
-        maxForGoal = Math.max(0, p.amount - (p.reserved || 0));
-      } else if (type === "short") {
-        const g = state.shortGoals.find((x) => x.id === id);
-        if (!g) return;
-        const total = g.totalAmount || g.amount || 0;
-        const remaining = Math.max(0, g.remaining ?? total);
-        title = `Распределить на "${g.title}"`;
-        maxForGoal = remaining;
-      }
-
-      const maxFromBalance = Math.max(0, state.balance);
-      const hardMax = Math.min(maxFromGoal, maxFromBalance);
-
-      if (hardMax <= 0) {
-        openSheet("Распределение", `
-          <div class="field-group">
-            <div class="field-label">Нельзя распределить</div>
-            <div class="helper-text">либо баланс на руках нулевой, либо по цели уже всё собрано.</div>
-          </div>
-        `);
-        return;
-      }
-
-      openSheet(title, `
-        <div class="field-group">
-          <div class="field-label">Сумма, ₽</div>
-          <input type="number" id="alloc-amount" class="field-input" inputmode="decimal" />
-          <div class="helper-text">на руках: ${state.balance.toLocaleString("ru-RU")} ₽, максимум на эту цель: ${hardMax.toLocaleString("ru-RU")} ₽</div>
-        </div>
-        <button class="btn btn-primary" id="alloc-save">распределить</button>
-      `);
-
-      document.getElementById("alloc-amount").focus();
-
-      document.getElementById("alloc-save").addEventListener("click", () => {
-        const raw = document.getElementById("alloc-amount").value.replace(",", ".");
-        const val = Math.round(parseFloat(raw));
-        if (!val || val <= 0) return;
-        if (val > hardMax) return;
-
-        if (type === "monthly") {
-          const p = state.monthlyPayments.find((x) => x.id === id);
-          if (!p) return;
-          p.reserved = (p.reserved || 0) + val;
-          state.balance -= val;
-        } else if (type === "short") {
-          const g = state.shortGoals.find((x) => x.id === id);
-          if (!g) return;
-          g.manualSaved = (g.manualSaved || 0) + val;
-          g.remaining = Math.max(0, (g.remaining ?? g.totalAmount) - val);
-          state.balance -= val;
-        }
-
-        saveState();
-        closeSheet();
+      // allocations
+      spareCard.querySelectorAll("[data-alloc]").forEach((b) => {
+        b.addEventListener("click", () => {
+          const id = b.getAttribute("data-alloc");
+          const type = b.getAttribute("data-alloc-type");
+          const goal =
+            type === "short"
+              ? state.shortGoals.find((g) => g.id === id)
+              : state.monthlyPayments.find((g) => g.id === id);
+          if (goal) openAllocationSheet(goal, type);
+        });
       });
-    }
 
-    function cancelAllocation(type, id) {
-      if (type === "monthly") {
-        const p = state.monthlyPayments.find((x) => x.id === id);
-        if (!p) return;
-        const reserved = p.reserved || 0;
-        if (!reserved) return;
-        if (!confirm("Отменить распределение по этой ежемесячной цели?")) return;
-        state.balance += reserved;
-        p.reserved = 0;
-      } else if (type === "short") {
-        const g = state.shortGoals.find((x) => x.id === id);
-        if (!g) return;
-        const manual = g.manualSaved || 0;
-        if (!manual) return;
-        if (!confirm("Отменить распределение свободных денег по этой цели?")) return;
-        state.balance += manual;
-        const total = g.totalAmount || g.amount || 0;
-        g.remaining = Math.min(total, (g.remaining ?? total) + manual);
-        g.manualSaved = 0;
-      }
-      saveState();
+      spareCard.querySelectorAll("[data-undo-alloc]").forEach((b) => {
+        b.addEventListener("click", () => {
+          const id = b.getAttribute("data-undo-alloc");
+          const type = b.getAttribute("data-alloc-type");
+          const goal =
+            type === "short"
+              ? state.shortGoals.find((g) => g.id === id)
+              : state.monthlyPayments.find((g) => g.id === id);
+          if (goal) openUndoAllocationSheet(goal, type);
+        });
+      });
     }
 
     // ====== RENDER GOALS TAB ======
@@ -1881,77 +1531,45 @@
           </div>
           <button class="btn btn-small btn-outline" id="btn-add-goal">+ цель</button>
         </div>
-        <div class="section-title">
-          <span>По неделям</span>
-        </div>
-        <div id="goals-groups"></div>
+        <div class="section-title">Активные</div>
+        <div class="list" id="goals-list"></div>
       `;
       contentEl.appendChild(goalsCard);
 
-      const container = goalsCard.querySelector("#goals-groups");
+      const listEl = goalsCard.querySelector("#goals-list");
       if (!state.goals.length) {
-        container.innerHTML = `<div class="empty">целей пока нет</div>`;
+        listEl.innerHTML = `<div class="empty">целей пока нет</div>`;
       } else {
         const sorted = [...state.goals].sort((a, b) => {
+          const order = { day: 0, week: 1, month: 2, none: 3 };
+          if (order[a.type] !== order[b.type]) {
+            return order[a.type] - order[b.type];
+          }
           return a.createdISO < b.createdISO ? 1 : -1;
         });
 
-        const groups = {};
-        sorted.forEach((g) => {
-          const key = getWeekKey(g.createdISO || todayISO());
-          if (!groups[key]) groups[key] = [];
-          groups[key].push(g);
-        });
-
-        const keys = Object.keys(groups).sort((a, b) => (a < b ? 1 : -1));
-
-        container.innerHTML = "";
-
-        keys.forEach((key, idx) => {
-          if (expandedWeeks[key] === undefined) {
-            expandedWeeks[key] = idx === 0;
-          }
-          const groupEl = document.createElement("div");
-          groupEl.className = "week-group";
-          const label = weekLabelFromKey(key);
-          groupEl.innerHTML = `
-            <div class="week-header" data-week-key="${key}">
-              <span>${label}</span>
-              <span class="week-toggle">${expandedWeeks[key] ? "▾" : "▸"}</span>
-            </div>
-            <div class="week-body" style="display:${expandedWeeks[key] ? "block" : "none"}"></div>
-          `;
-          const body = groupEl.querySelector(".week-body");
-          groups[key].forEach((g) => {
+        listEl.innerHTML = sorted
+          .map((g) => {
             const subs = g.subtasks || [];
-            const doneSubs = subs.filter((s) => s.done).length;
-            const allSubsDone = subs.length > 0 && doneSubs === subs.length;
-            if (allSubsDone && !g.done) {
-              g.done = true;
+            const tProgress = taskGoalProgressPercent(g);
+            let finProgressText = "";
+            if (g.linkedShortGoalId) {
+              const sg = state.shortGoals.find(
+                (x) => x.id === g.linkedShortGoalId
+              );
+              if (sg) {
+                const p = shortGoalProgressPercent(sg);
+                finProgressText = `фин. прогресс: ${p}%`;
+              }
             }
-
-            let goalProgress = 0;
-            if (subs.length) {
-              goalProgress = Math.round((doneSubs / subs.length) * 100);
-            } else {
-              goalProgress = g.done ? 100 : 0;
-            }
-
-            const goalBox = document.createElement("div");
-            goalBox.className = "goal-box" + (g.done ? " done" : "");
-            goalBox.innerHTML = `
-              <div class="goal-box-header">
-                <div class="goal-main-title">
-                  <label>
-                    <input type="checkbox"
-                      class="goal-done-toggle"
-                      data-goal-id="${g.id}"
-                      ${g.done ? "checked" : ""} />
-                    <span>${g.title}</span>
-                  </label>
-                  <div class="circle-progress" style="--progress:${goalProgress};">
-                    <span>${goalProgress}</span>
+            return `
+            <div class="goal-item">
+              <div class="tx-main">
+                <div style="display:flex;align-items:center;gap:6px;">
+                  <div style="width:16px;height:16px;border-radius:50%;background:
+                    conic-gradient(var(--accent) ${tProgress}%, rgba(255,255,255,0.1) ${tProgress}%);">
                   </div>
+                  <span>${g.title}</span>
                 </div>
                 <span class="goal-type-pill" data-type="${g.type}">
                   ${
@@ -1967,14 +1585,30 @@
               </div>
               <div class="tx-meta">
                 <span>создано: ${formatDate(g.createdISO)}</span>
-                <span>${g.deadlineISO ? "до " + formatDate(g.deadlineISO) : ""}</span>
+                <span>${
+                  g.deadlineISO ? "до " + formatDate(g.deadlineISO) : ""
+                }</span>
               </div>
+              <div class="small-inline">
+                прогресс по шагам: ${
+                  subs.length
+                    ? `${subs.filter((s) => s.done).length} / ${
+                        subs.length
+                      } (${tProgress}%)`
+                    : "микроцели не заданы"
+                }
+              </div>
+              ${
+                finProgressText
+                  ? `<div class="small-inline">${finProgressText}</div>`
+                  : ""
+              }
               ${
                 g.linkedShortGoalId
                   ? `<div class="chip-row"><span class="badge-link">есть финансовая цель</span></div>`
                   : ""
               }
-              ${g.description ? `<div class="muted">${g.description}</div>` : ""}
+              <div class="muted">${g.description || ""}</div>
               ${
                 subs.length
                   ? `<ul class="subtask-list">
@@ -1996,87 +1630,43 @@
                     </ul>`
                   : ""
               }
-              <div class="chip-row">
-                ${tagsToHTML(g.tags)}
-                <button class="btn btn-small btn-outline" data-edit-goal="${g.id}">изменить</button>
-                <button class="btn btn-small btn-outline" data-delete-goal="${g.id}">удалить</button>
+              <div class="chip-row" style="margin-top:6px;">
+                <button class="btn btn-small btn-outline" data-edit-goal="${
+                  g.id
+                }">изменить</button>
               </div>
-            `;
-            body.appendChild(goalBox);
-          });
-
-          container.appendChild(groupEl);
-        });
-
-        container.addEventListener("click", (e) => {
-          const header = e.target.closest(".week-header");
-          if (header) {
-            const key = header.getAttribute("data-week-key");
-            if (!key) return;
-            expandedWeeks[key] = !expandedWeeks[key];
-            renderGoals();
-            return;
-          }
-
-          const delBtn = e.target.closest("[data-delete-goal]");
-          if (delBtn) {
-            const id = delBtn.getAttribute("data-delete-goal");
-            if (!id) return;
-            if (!confirm("Удалить эту цель?")) return;
-            const goal = state.goals.find((g) => g.id === id);
-            const linkedId = goal ? goal.linkedShortGoalId : null;
-            state.goals = state.goals.filter((g) => g.id !== id);
-            if (linkedId) {
-              state.shortGoals = state.shortGoals.filter(
-                (sg) => sg.id !== linkedId
-              );
-            }
-            saveState();
-            return;
-          }
-
-          const editBtn = e.target.closest("[data-edit-goal]");
-          if (editBtn) {
-            const id = editBtn.getAttribute("data-edit-goal");
-            const goal = state.goals.find((g) => g.id === id);
-            if (goal) openEditGoalSheet(goal);
-            return;
-          }
-        });
-
-        container.addEventListener("change", (e) => {
-          const goalToggle = e.target.closest(".goal-done-toggle");
-          if (goalToggle) {
-            const id = goalToggle.getAttribute("data-goal-id");
-            const goal = state.goals.find((g) => g.id === id);
-            if (!goal) return;
-            goal.done = goalToggle.checked;
-            saveState();
-            return;
-          }
-          const subToggle = e.target.closest(".subtask-toggle");
-          if (subToggle) {
-            const goalId = subToggle.getAttribute("data-goal-id");
-            const subId = subToggle.getAttribute("data-subtask-id");
-            const goal = state.goals.find((g) => g.id === goalId);
-            if (!goal) return;
-            const sub = (goal.subtasks || []).find((s) => s.id === subId);
-            if (!sub) return;
-            sub.done = subToggle.checked;
-            const subs = goal.subtasks || [];
-            const allDone = subs.length > 0 && subs.every((s) => s.done);
-            if (allDone) {
-              goal.done = true;
-            }
-            saveState();
-            return;
-          }
-        });
+              ${tagsToHTML(g.tags)}
+            </div>
+          `;
+          })
+          .join("");
       }
 
       goalsCard
         .querySelector("#btn-add-goal")
         .addEventListener("click", () => openGoalSheet());
+
+      // toggle subtasks
+      goalsCard.addEventListener("change", (e) => {
+        const checkbox = e.target.closest(".subtask-toggle");
+        if (!checkbox) return;
+        const goalId = checkbox.getAttribute("data-goal-id");
+        const subId = checkbox.getAttribute("data-subtask-id");
+        const goal = state.goals.find((g) => g.id === goalId);
+        if (!goal) return;
+        const sub = (goal.subtasks || []).find((s) => s.id === subId);
+        if (!sub) return;
+        sub.done = checkbox.checked;
+        saveState();
+      });
+
+      goalsCard.querySelectorAll("[data-edit-goal]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-edit-goal");
+          const goal = state.goals.find((g) => g.id === id);
+          if (goal) openGoalEditSheet(goal);
+        });
+      });
     }
 
     // ====== RENDER ANALYTICS TAB ======
@@ -2111,33 +1701,6 @@
       } else {
         renderGoalsAnalytics(body);
       }
-
-      // блок достижений
-      const ach = computeAchievements();
-      const wrap = document.createElement("div");
-      wrap.innerHTML = `
-        <div class="section-title" style="margin-top:8px;">
-          <span>Достижения</span>
-        </div>
-      `;
-      const achList = document.createElement("div");
-      achList.className = "achievement-list";
-      if (!ach.length) {
-        achList.innerHTML = `<div class="empty">достижения появятся, когда начнёшь пользоваться трекером активнее</div>`;
-      } else {
-        achList.innerHTML = ach
-          .map(
-            (a) => `
-          <div class="achievement-item">
-            <div class="achievement-title">${a.title}</div>
-            <div class="achievement-text">${a.text}</div>
-          </div>
-        `
-          )
-          .join("");
-      }
-      wrap.appendChild(achList);
-      body.appendChild(wrap);
 
       card.querySelectorAll("[data-analytics-mode]").forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -2231,7 +1794,7 @@
         <div class="section-title" style="margin-top:8px;">
           <span>Последние 7 дней</span>
         </div>
-      `;
+      ";
 
       if (!a.lastDays.length) {
         html += `<div class="empty">нет данных по дням</div>`;
@@ -2292,6 +1855,57 @@
         html += `<div class="empty">ещё нет статистики по тегам</div>`;
       }
 
+      // achievements / gamification
+      const achievements = [];
+
+      if (a.currentStreak >= 3) {
+        achievements.push({
+          title: "Серия держится",
+          text: "3+ дня подряд с учётом денег. Это уже режим, а не случайность."
+        });
+      }
+      if (a.currentStreak >= 7) {
+        achievements.push({
+          title: "Железная неделя",
+          text: "7 дней подряд ты держал денежный фокус. Это прям серьёзная заявка."
+        });
+      }
+      if (a.monthNet > 0) {
+        achievements.push({
+          title: "Месяц в плюсе",
+          text: "Расходы ниже доходов. Ты не просто выживаешь, а набираешь обороты."
+        });
+      }
+      if (a.completedShort > 0) {
+        achievements.push({
+          title: "Финальные удары по целям",
+          text: `Закрыл ${a.completedShort} краткосрочных фин. целей. Ты умеешь доводить до конца.`
+        });
+      }
+
+      html += `
+        <div class="section-title" style="margin-top:8px;">
+          <span>Достижения</span>
+        </div>
+      `;
+
+      if (!achievements.length) {
+        html += `<div class="empty">достижения появятся, как только начнёшь двигать деньги осознанно</div>`;
+      } else {
+        html += `<ul class="achievements-list">`;
+        html += achievements
+          .map(
+            (ach) => `
+          <li class="achievement-item">
+            <div class="achievement-title">${ach.title}</div>
+            <div>${ach.text}</div>
+          </li>
+        `
+          )
+          .join("");
+        html += `</ul>`;
+      }
+
       container.innerHTML = html;
     }
 
@@ -2345,19 +1959,10 @@
       } else {
         html += a.recentGoals
           .map((g) => {
-            let goalProgress = 0;
-            if (g.subtasksTotal) {
-              goalProgress = Math.round((g.subtasksDone / g.subtasksTotal) * 100);
-            }
             return `
             <div class="goal-item">
               <div class="tx-main">
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div class="circle-progress" style="--progress:${goalProgress};">
-                    <span>${goalProgress}</span>
-                  </div>
-                  <span>${g.title}</span>
-                </div>
+                <span>${g.title}</span>
                 <span class="goal-type-pill" data-type="${g.type}">
                   ${
                     g.type === "day"
@@ -2385,50 +1990,44 @@
           .join("");
       }
 
-      container.innerHTML = html;
-    }
-
-    // ====== SETTINGS SHEET ======
-
-    function openSettingsSheet() {
-      openSheet(
-        "Настройки",
-        `
-        <div class="field-group">
-          <div class="field-label">Тема</div>
-          <select id="theme-select" class="field-select">
-            <option value="auto">авто (по системе)</option>
-            <option value="dark">тёмная</option>
-            <option value="light">светлая</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Данные</div>
-          <button class="btn btn-ghost" id="btn-clear-all">очистить все данные</button>
-          <div class="helper-text">удалит все финансы, цели и историю приложения (кроме темы)</div>
-        </div>
-      `
-      );
-
-      const themeSelect = document.getElementById("theme-select");
-      themeSelect.value = themeMode;
-      themeSelect.addEventListener("change", () => {
-        saveThemeMode(themeSelect.value);
-      });
-
-      document
-        .getElementById("btn-clear-all")
-        .addEventListener("click", () => {
-          if (
-            !confirm(
-              "Точно очистить все данные? Это удалит все цели, финансы и историю."
-            )
-          )
-            return;
-          localStorage.removeItem(STORAGE_KEY);
-          state = loadState();
-          render();
+      const goalAchievements = [];
+      if (a.totalSubtasks >= 5) {
+        goalAchievements.push({
+          title: "Разбил по шагам",
+          text: "У тебя уже несколько микроцелей. Это не прокрастинация, а системный подход."
         });
+      }
+      if (a.progressSubtasks >= 50 && a.totalSubtasks > 0) {
+        goalAchievements.push({
+          title: "Больше половины сделано",
+          text: "Бетон уже залит, осталось поднять этажи. Главное — не тормозить."
+        });
+      }
+
+      html += `
+        <div class="section-title" style="margin-top:8px;">
+          <span>Достижения</span>
+        </div>
+      `;
+
+      if (!goalAchievements.length) {
+        html += `<div class="empty">как только начнёшь закрывать микроцели, тут появятся награды</div>`;
+      } else {
+        html += `<ul class="achievements-list">`;
+        html += goalAchievements
+          .map(
+            (ach) => `
+          <li class="achievement-item">
+            <div class="achievement-title">${ach.title}</div>
+            <div>${ach.text}</div>
+          </li>
+        `
+          )
+          .join("");
+        html += `</ul>`;
+      }
+
+      container.innerHTML = html;
     }
 
     // ====== SHEET (MODAL) UTILS ======
@@ -2456,8 +2055,11 @@
 
     // ====== SHEETS IMPLEMENTATION ======
 
+    // Add income/expense
     function openTxSheet(type) {
-      openSheet(type === "income" ? "Добавить доход" : "Добавить расход", `
+      openSheet(
+        type === "income" ? "Добавить доход" : "Добавить расход",
+        `
         <div class="field-group">
           <div class="field-label">Сумма</div>
           <input type="number" id="tx-amount" class="field-input" inputmode="decimal" />
@@ -2476,7 +2078,8 @@
           <input type="date" id="tx-date" class="field-input" value="${todayISO()}" />
         </div>
         <button class="btn btn-primary" id="tx-save">сохранить</button>
-      `);
+      `
+      );
 
       document.getElementById("tx-amount").focus();
 
@@ -2510,6 +2113,7 @@
       });
     }
 
+    // Balance manual set
     function openBalanceSheet() {
       openSheet(
         "Настроить баланс",
@@ -2536,6 +2140,7 @@
       });
     }
 
+    // Add monthly payment
     function openMonthlySheet() {
       openSheet(
         "Добавить ежемесячный платёж",
@@ -2557,12 +2162,6 @@
         <div class="field-group">
           <div class="field-label">Описание</div>
           <input type="text" id="mp-desc" class="field-input" placeholder="комментарий (опционально)" />
-        </div>
-        <div class="field-group">
-          <label class="field-label">
-            <input type="checkbox" id="mp-priority" />
-            высокий приоритет
-          </label>
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
@@ -2587,7 +2186,6 @@
           .getElementById("mp-desc")
           .value.trim();
         const tags = parseTags(document.getElementById("mp-tags").value);
-        const priority = document.getElementById("mp-priority").checked;
 
         state.monthlyPayments.push({
           id: uuid(),
@@ -2595,9 +2193,7 @@
           amount: Math.round(amountVal),
           dayOfMonth: day,
           description,
-          tags,
-          priority,
-          reserved: 0
+          tags
         });
 
         saveState();
@@ -2605,6 +2201,10 @@
       });
     }
 
+    // Short goals undo history (in-memory)
+    const lastGoalSnapshots = {}; // goalId -> JSON string
+
+    // Add short financial goal
     function openShortGoalSheet(prefill = {}) {
       const today = todayISO();
       openSheet(
@@ -2629,12 +2229,6 @@
           prefill.deadlineISO || today
         }" />
           </div>
-        </div>
-        <div class="field-group">
-          <label class="field-label">
-            <input type="checkbox" id="sg-priority" />
-            высокий приоритет
-          </label>
         </div>
         <div class="field-group">
           <div class="field-label">Дни без заработка (календарь)</div>
@@ -2695,7 +2289,6 @@
           document.getElementById("sg-deadline").value || today;
         const tags = parseTags(document.getElementById("sg-tags").value);
         const nonWorkingDatesArr = Array.from(nonWorkingDates);
-        const priority = document.getElementById("sg-priority").checked;
 
         const createdISO = today;
         const total = Math.round(amountVal);
@@ -2716,9 +2309,7 @@
           createdISO,
           nonWorkingDates: nonWorkingDatesArr,
           schedule,
-          tags,
-          priority,
-          manualSaved: 0
+          tags
         };
 
         state.shortGoals.push(goal);
@@ -2727,9 +2318,11 @@
       });
     }
 
+    // Schedule sheet for short goal
     function openShortGoalScheduleSheet(goal) {
+      const today = todayISO();
       const pendingCount = goal.schedule.filter(
-        (d) => d.status === "pending"
+        (d) => d.status === "pending" && compareDateISO(d.dateISO, today) >= 0
       ).length;
       openSheet(
         `Цель: ${goal.title}`,
@@ -2745,12 +2338,14 @@
         </div>
         <div class="section-title">
           <span>Расписание по дням</span>
+          <button class="btn btn-small btn-outline" id="btn-undo-goal">отменить последнее</button>
         </div>
         <div class="schedule-list" id="sched-list"></div>
       `
       );
 
       const listEl = document.getElementById("sched-list");
+      const undoBtn = document.getElementById("btn-undo-goal");
 
       function updateHeader() {
         sheetBodyEl
@@ -2759,56 +2354,53 @@
       }
 
       function renderScheduleListLocal() {
+        const today = todayISO();
         const sorted = [...goal.schedule].sort((a, b) =>
           compareDateISO(a.dateISO, b.dateISO)
         );
         listEl.innerHTML = sorted
           .map((d) => {
-            const statusLabel =
-              d.status === "done"
-                ? "выполнено"
-                : d.status === "skipped"
-                ? "пропущено"
-                : "ожидание";
+            const isPast = compareDateISO(d.dateISO, today) < 0;
+            const isToday = d.dateISO === today;
+            const canAct = !isPast && d.status === "pending";
             return `
           <div class="schedule-item">
             <div class="sched-left">
-              <span class="sched-date">${formatDate(d.dateISO)} ${weekdayShort(d.dateISO)}</span>
+              <span class="sched-date">${formatDate(d.dateISO)}${
+              isToday ? " · сегодня" : ""
+            }</span>
               <span class="sched-plan">план: ${d.planned.toLocaleString(
                 "ru-RU"
               )} ₽</span>
-              <span class="sched-status ${d.status}">${statusLabel}</span>
             </div>
             <div class="sched-btn-row">
-              <button class="sched-btn sched-btn-primary" data-action="done" data-date="${
-                d.dateISO
-              }">сделал</button>
-              <button class="sched-btn" data-action="skip" data-date="${
-                d.dateISO
-              }">пропустить</button>
-              <button class="sched-btn" data-action="reset" data-date="${
-                d.dateISO
-              }">сбросить</button>
+              ${
+                d.status === "pending"
+                  ? canAct
+                    ? `
+                  <button class="sched-btn sched-btn-primary" data-action="done" data-date="${
+                    d.dateISO
+                  }">сделал</button>
+                  <button class="sched-btn" data-action="skip" data-date="${
+                    d.dateISO
+                  }">пропустить</button>
+                `
+                    : `<span class="sched-status">ожидание</span>`
+                  : `<span class="sched-status ${d.status}">
+                      ${
+                        d.status === "done"
+                          ? "выполнено"
+                          : d.status === "skipped"
+                          ? "пропущено"
+                          : d.status
+                      }
+                    </span>`
+              }
             </div>
           </div>
         `;
           })
           .join("");
-      }
-
-      function updateEntryStatus(entry, newStatus) {
-        const prev = entry.status || "pending";
-        if (prev === newStatus) return;
-
-        if (prev === "done") {
-          goal.remaining += entry.planned;
-        }
-
-        if (newStatus === "done") {
-          goal.remaining = Math.max(0, goal.remaining - entry.planned);
-        }
-
-        entry.status = newStatus;
       }
 
       renderScheduleListLocal();
@@ -2821,22 +2413,63 @@
         if (!dateISO) return;
 
         const entry = goal.schedule.find((d) => d.dateISO === dateISO);
-        if (!entry) return;
+        if (!entry || entry.status !== "pending") return;
+
+        // save snapshot for undo
+        lastGoalSnapshots[goal.id] = JSON.stringify(goal);
 
         if (action === "done") {
-          updateEntryStatus(entry, "done");
+          goal.remaining = Math.max(0, goal.remaining - entry.planned);
+          entry.status = "done";
         } else if (action === "skip") {
-          updateEntryStatus(entry, "skipped");
-        } else if (action === "reset") {
-          updateEntryStatus(entry, "pending");
+          entry.status = "skipped";
+          redistributeSkipped(goal, entry);
         }
 
         saveState();
         renderScheduleListLocal();
         updateHeader();
       });
+
+      undoBtn.addEventListener("click", () => {
+        const snap = lastGoalSnapshots[goal.id];
+        if (!snap) return;
+        const restored = JSON.parse(snap);
+        const idx = state.shortGoals.findIndex((g) => g.id === goal.id);
+        if (idx !== -1) {
+          state.shortGoals[idx] = restored;
+        }
+        Object.assign(goal, restored);
+        saveState();
+        renderScheduleListLocal();
+        updateHeader();
+      });
     }
 
+    function redistributeSkipped(goal, skippedEntry) {
+      const extra = skippedEntry.planned;
+      const today = todayISO();
+      const pendingFuture = goal.schedule.filter(
+        (d) =>
+          d.status === "pending" &&
+          compareDateISO(d.dateISO, today) >= 0 &&
+          d.dateISO !== skippedEntry.dateISO
+      );
+      if (!pendingFuture.length || extra <= 0) return;
+
+      const perDay = Math.floor(extra / pendingFuture.length);
+      let remainder = extra - perDay * pendingFuture.length;
+
+      pendingFuture.forEach((d) => {
+        d.planned += perDay;
+        if (remainder > 0) {
+          d.planned += 1;
+          remainder -= 1;
+        }
+      });
+    }
+
+    // Add goal (tasks)
     function openGoalSheet() {
       const today = todayISO();
       openSheet(
@@ -2884,12 +2517,6 @@
               <div class="field-label">Дедлайн (финансовый)</div>
               <input type="date" id="g-fin-deadline" class="field-input" min="${today}" />
             </div>
-          </div>
-          <div class="field-group">
-            <label class="field-label">
-              <input type="checkbox" id="g-fin-priority" />
-              высокий приоритет фин. цели
-            </label>
           </div>
         </div>
         <div class="field-group">
@@ -2956,14 +2583,13 @@
           );
           const finDeadline =
             document.getElementById("g-fin-deadline").value || deadlineISO;
-          const finPriority = document.getElementById("g-fin-priority").checked;
           if (!finAmountVal || finAmountVal <= 0 || !finDeadline) {
             return;
           }
 
           const createdISO = today;
-          const total = Math.round(finAmountVal);
           const nonWorkingDates = [];
+          const total = Math.round(finAmountVal);
           const schedule = generateSchedule(
             createdISO,
             finDeadline,
@@ -2981,9 +2607,7 @@
             createdISO,
             nonWorkingDates,
             schedule,
-            tags,
-            priority: finPriority,
-            manualSaved: 0
+            tags
           };
           state.shortGoals.push(sg);
           linkedShortGoalId = sg.id;
@@ -2998,8 +2622,7 @@
           deadlineISO,
           tags,
           linkedShortGoalId,
-          subtasks,
-          done: false
+          subtasks
         };
 
         state.goals.push(goal);
@@ -3008,102 +2631,115 @@
       });
     }
 
-    function openEditGoalSheet(goal) {
+    function openGoalEditSheet(goal) {
       const today = todayISO();
+      const subtasks = goal.subtasks || [];
       openSheet(
         "Редактировать цель",
         `
         <div class="field-group">
           <div class="field-label">Название</div>
-          <input type="text" id="eg-title" class="field-input" value="${goal.title}" />
+          <input type="text" id="eg-title" class="field-input" value="${
+            goal.title || ""
+          }" />
         </div>
         <div class="field-group">
           <div class="field-label">Описание</div>
-          <textarea id="eg-desc" class="field-textarea">${goal.description || ""}</textarea>
+          <textarea id="eg-desc" class="field-textarea">${
+            goal.description || ""
+          }</textarea>
         </div>
         <div class="field-group">
           <div class="field-label">Тип</div>
           <select id="eg-type" class="field-select">
-            <option value="day">на день</option>
-            <option value="week">на неделю</option>
-            <option value="month">на месяц</option>
-            <option value="none">без срока</option>
+            <option value="day" ${
+              goal.type === "day" ? "selected" : ""
+            }>на день</option>
+            <option value="week" ${
+              goal.type === "week" ? "selected" : ""
+            }>на неделю</option>
+            <option value="month" ${
+              goal.type === "month" ? "selected" : ""
+            }>на месяц</option>
+            <option value="none" ${
+              goal.type === "none" ? "selected" : ""
+            }>без срока</option>
           </select>
         </div>
         <div class="field-group">
           <div class="field-label">Дедлайн (опционально)</div>
-          <input type="date" id="eg-deadline" class="field-input" min="${today}" />
+          <input type="date" id="eg-deadline" class="field-input" min="${today}" value="${
+          goal.deadlineISO || ""
+        }" />
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
-          <input type="text" id="eg-tags" class="field-input" value="${(goal.tags || []).join(", ")}" />
+          <input type="text" id="eg-tags" class="field-input" value="${
+            (goal.tags || []).join(", ") || ""
+          }" />
         </div>
         <div class="field-group">
           <div class="field-label">Микроцели</div>
           <div id="eg-subtasks-container"></div>
           <button class="btn btn-small btn-outline" type="button" id="eg-add-subtask">+ микроцель</button>
-          <div class="helper-text">можно удалить ненужные или добавить новые</div>
+          <div class="helper-text">можно удалить лишние шаги или добавить новые</div>
         </div>
-        <button class="btn btn-primary" id="eg-save">сохранить</button>
+        <button class="btn btn-primary" id="eg-save">сохранить изменения</button>
       `
       );
 
-      const typeSelect = document.getElementById("eg-type");
-      typeSelect.value = goal.type || "none";
+      const container = document.getElementById("eg-subtasks-container");
+      const addBtn = document.getElementById("eg-add-subtask");
 
-      const deadlineInput = document.getElementById("eg-deadline");
-      if (goal.deadlineISO) {
-        deadlineInput.value = goal.deadlineISO;
-      }
-
-      const subtasksContainer = document.getElementById("eg-subtasks-container");
-      const addSubBtn = document.getElementById("eg-add-subtask");
-
-      function addSubtaskRow(sub) {
+      function addRow(sub) {
         const row = document.createElement("div");
         row.className = "field-row subtask-row";
-        row.dataset.id = sub?.id || "";
+        row.dataset.subId = sub?.id || "";
         row.innerHTML = `
-          <input type="text" class="field-input eg-subtask-title" value="${sub ? sub.title : ""}" />
-          <button type="button" class="btn btn-small btn-outline eg-subtask-remove">×</button>
+          <input type="text" class="field-input eg-subtitle" placeholder="шаг" value="${
+            sub?.title || ""
+          }" />
+          <button type="button" class="btn btn-small btn-outline eg-remove-sub">×</button>
         `;
-        subtasksContainer.appendChild(row);
+        container.appendChild(row);
       }
 
-      (goal.subtasks || []).forEach((s) => addSubtaskRow(s));
+      subtasks.forEach((s) => addRow(s));
 
-      addSubBtn.addEventListener("click", () => addSubtaskRow(null));
+      addBtn.addEventListener("click", () => addRow(null));
 
-      subtasksContainer.addEventListener("click", (e) => {
-        const rm = e.target.closest(".eg-subtask-remove");
-        if (!rm) return;
-        const row = rm.closest(".subtask-row");
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".eg-remove-sub");
+        if (!btn) return;
+        const row = btn.closest(".subtask-row");
         if (row) row.remove();
       });
+
+      document.getElementById("eg-title").focus();
 
       document.getElementById("eg-save").addEventListener("click", () => {
         const title = document.getElementById("eg-title").value.trim();
         if (!title) return;
         const description = document.getElementById("eg-desc").value.trim();
         const type = document.getElementById("eg-type").value;
-        const deadlineISO = deadlineInput.value || null;
+        const deadlineISO =
+          document.getElementById("eg-deadline").value || null;
         const tags = parseTags(document.getElementById("eg-tags").value);
 
-        const oldSubs = goal.subtasks || [];
-        const rows = subtasksContainer.querySelectorAll(".subtask-row");
-        const newSubs = [];
-        rows.forEach((row) => {
-          const id = row.dataset.id || uuid();
-          const titleEl = row.querySelector(".eg-subtask-title");
-          const text = (titleEl.value || "").trim();
-          if (!text) return;
-          const old = oldSubs.find((s) => s.id === id);
-          newSubs.push({
-            id,
-            title: text,
-            done: old ? old.done : false
-          });
-        });
+        const rows = container.querySelectorAll(".subtask-row");
+        const existingSubs = goal.subtasks || [];
+        const newSubs = Array.from(rows)
+          .map((row) => {
+            const id = row.dataset.subId;
+            const title = row.querySelector(".eg-subtitle").value.trim();
+            if (!title) return null;
+            const existing = existingSubs.find((s) => s.id === id);
+            if (existing) {
+              return { ...existing, title };
+            }
+            return { id: uuid(), title, done: false };
+          })
+          .filter(Boolean);
 
         goal.title = title;
         goal.description = description;
@@ -3112,12 +2748,117 @@
         goal.tags = tags;
         goal.subtasks = newSubs;
 
-        if (goal.subtasks.length && goal.subtasks.every((s) => s.done)) {
-          goal.done = true;
-        }
-
         saveState();
         closeSheet();
+      });
+    }
+
+    // allocations sheets
+    function openAllocationSheet(goal, goalType) {
+      openSheet(
+        "Распределить деньги",
+        `
+        <div class="field-group">
+          <div class="field-label">Цель</div>
+          <div class="muted">${goal.title}</div>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Сумма, ₽</div>
+          <input type="number" id="alloc-amount" class="field-input" inputmode="decimal" />
+          <div class="helper-text">доступно на руках: ${state.balance.toLocaleString(
+            "ru-RU"
+          )} ₽</div>
+        </div>
+        <button class="btn btn-primary" id="alloc-save">выделить</button>
+      `
+      );
+
+      document.getElementById("alloc-amount").focus();
+
+      document.getElementById("alloc-save").addEventListener("click", () => {
+        const amountVal = parseFloat(
+          document.getElementById("alloc-amount").value.replace(",", ".")
+        );
+        if (!amountVal || amountVal <= 0) return;
+        const amount = Math.round(amountVal);
+        if (amount > state.balance) {
+          // мягко, без алертов браузера
+          return;
+        }
+        state.allocations.push({
+          id: uuid(),
+          goalType: goalType === "short" ? "short" : "monthly",
+          goalId: goal.id,
+          amount,
+          dateISO: todayISO()
+        });
+        state.balance -= amount;
+        saveState();
+        closeSheet();
+      });
+    }
+
+    function openUndoAllocationSheet(goal, goalType) {
+      const goalTypeFixed = goalType === "short" ? "short" : "monthly";
+      const list = allocationsFor(goalTypeFixed, goal.id);
+      openSheet(
+        "Отменить распределение",
+        `
+        <div class="field-group">
+          <div class="field-label">Цель</div>
+          <div class="muted">${goal.title}</div>
+        </div>
+        <div class="field-group">
+          <div class="field-label">История распределений</div>
+          <div id="undo-alloc-list"></div>
+          <div class="helper-text">можно отменить конкретные выделения, деньги вернутся на баланс</div>
+        </div>
+      `
+      );
+
+      const listEl = document.getElementById("undo-alloc-list");
+
+      function renderList() {
+        const current = allocationsFor(goalTypeFixed, goal.id);
+        if (!current.length) {
+          listEl.innerHTML = `<div class="empty">распределений нет</div>`;
+          return;
+        }
+        const sorted = [...current].sort((a, b) =>
+          a.dateISO < b.dateISO ? 1 : -1
+        );
+        listEl.innerHTML = sorted
+          .map(
+            (a) => `
+          <div class="tx-item">
+            <div class="tx-main">
+              <span>${formatDate(a.dateISO)}</span>
+              <span class="tx-amount income">${a.amount.toLocaleString(
+                "ru-RU"
+              )} ₽</span>
+            </div>
+            <div class="tx-meta">
+              <span>распределение</span>
+              <button class="btn btn-small btn-outline" data-del-alloc="${a.id}">отменить</button>
+            </div>
+          </div>
+        `
+          )
+          .join("");
+      }
+
+      renderList();
+
+      listEl.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-del-alloc]");
+        if (!btn) return;
+        const id = btn.getAttribute("data-del-alloc");
+        const alloc = (state.allocations || []).find((a) => a.id === id);
+        if (!alloc) return;
+        state.allocations = state.allocations.filter((a) => a.id !== id);
+        state.balance += alloc.amount || 0;
+        saveState();
+        renderList();
       });
     }
 
@@ -3186,7 +2927,7 @@
       });
     }
 
-    // ====== NAV TABS INIT & HEADER BTNS ======
+    // ====== NAV TABS INIT & HEADER BTN ======
 
     document.querySelectorAll(".nav-tab").forEach((tab) => {
       tab.addEventListener("click", () => {
@@ -3204,11 +2945,6 @@
     const backupBtn = document.getElementById("btn-backup");
     if (backupBtn) {
       backupBtn.addEventListener("click", () => openBackupSheet());
-    }
-
-    const settingsBtn = document.getElementById("btn-settings");
-    if (settingsBtn) {
-      settingsBtn.addEventListener("click", () => openSettingsSheet());
     }
 
     // ====== INITIAL RENDER ======
