@@ -6,17 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     :root {
-      --bg: #050816;
-      --bg-elevated: #0b1220;
-      --card: #111827;
+      --bg: #020617;
+      --bg-elevated: #020617;
+      --card: #020617;
       --accent: #22c55e;
-      --accent-soft: rgba(34, 197, 94, 0.15);
+      --accent-soft: rgba(34, 197, 94, 0.12);
       --accent-strong: #16a34a;
       --danger: #f97373;
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
       --border-soft: #1f2937;
-      --tag-bg: #111827;
+      --tag-bg: #020617;
       --tag-border: #1f2937;
     }
 
@@ -35,7 +35,6 @@
       justify-content: center;
     }
 
-    /* светлая тема — просто перекидываем переменные и фон */
     body.light-theme {
       --bg: #f3f4f6;
       --bg-elevated: #e5e7eb;
@@ -82,6 +81,26 @@
       color: var(--text-muted);
     }
 
+    .header-actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .icon-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 6px 8px;
+      font-size: 14px;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    body.light-theme .icon-btn {
+      background: #f9fafb;
+    }
+
     .nav-tabs {
       display: flex;
       background: rgba(15, 23, 42, 0.9);
@@ -103,13 +122,13 @@
       font-size: 13px;
       cursor: pointer;
       user-select: none;
-      transition: background 0.15s ease, color 0.15s ease;
       color: var(--text-muted);
+      transition: background 0.15s ease, color 0.15s ease;
     }
 
     .nav-tab.active {
       background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-      color: #0b1120;
+      color: #020617;
       font-weight: 600;
     }
 
@@ -118,11 +137,10 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      padding-bottom: 16px;
     }
 
     .card {
-      background: linear-gradient(145deg, var(--card), var(--card));
+      background: var(--card);
       border-radius: 18px;
       padding: 14px 14px 12px;
       border: 1px solid var(--border-soft);
@@ -149,6 +167,11 @@
       align-items: center;
     }
 
+    .card-subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
     .pill {
       display: inline-flex;
       align-items: center;
@@ -160,27 +183,29 @@
       color: var(--accent);
     }
 
-    .card-subtitle {
-      font-size: 11px;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid var(--tag-border);
+      background: var(--tag-bg);
+      font-size: 10px;
       color: var(--text-muted);
     }
 
-    .balance-value {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .balance-label {
-      font-size: 11px;
-      color: var(--text-muted);
+    .tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .btn-row {
       display: flex;
       gap: 8px;
-      margin-top: 10px;
-      margin-bottom: 4px;
+      margin-top: 8px;
       flex-wrap: wrap;
     }
 
@@ -207,12 +232,7 @@
     }
 
     .btn:active {
-      transform: scale(0.98);
-      background: #020617;
-    }
-
-    body.light-theme .btn:active {
-      background: #e5e7eb;
+      transform: scale(0.97);
     }
 
     .btn-primary {
@@ -227,63 +247,61 @@
       color: var(--text-main);
     }
 
-    body.light-theme .btn-ghost {
-      background: #f3f4f6;
-    }
-
     .btn-small {
+      flex: 0;
       padding: 4px 8px;
       font-size: 11px;
-      border-radius: 999px;
-      flex: 0;
     }
 
     .btn-outline {
-      border-color: var(--border-soft);
       background: transparent;
       color: var(--text-muted);
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 2px 7px;
-      border-radius: 999px;
-      border: 1px solid var(--tag-border);
-      background: var(--tag-bg);
-      font-size: 10px;
-      color: var(--text-muted);
-    }
-
-    .tag-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
     }
 
     .section-title {
       font-size: 12px;
       font-weight: 600;
+      margin-top: 4px;
       margin-bottom: 4px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 8px;
+      align-items: center;
+      gap: 6px;
     }
 
     .section-subtitle {
       font-size: 11px;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+    }
+
+    .balance-value {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .balance-label {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .muted {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .empty {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+      margin-top: 4px;
     }
 
     .list {
       max-height: 180px;
       overflow-y: auto;
       padding-right: 2px;
-      margin: 0;
     }
 
     .list::-webkit-scrollbar {
@@ -295,8 +313,7 @@
       border-radius: 999px;
     }
 
-    .tx-item,
-    .payment-item {
+    .tx-item {
       padding: 6px 0;
       border-bottom: 1px dashed rgba(31, 41, 55, 0.9);
       display: flex;
@@ -308,8 +325,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 6px;
       font-size: 12px;
-      gap: 8px;
     }
 
     .tx-amount {
@@ -335,31 +352,19 @@
       flex-wrap: wrap;
     }
 
-    .muted {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .empty {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-style: italic;
-      margin-top: 4px;
-    }
-
     .chip-row {
       display: flex;
       flex-wrap: wrap;
       gap: 4px;
-      margin-top: 2px;
+      margin-top: 3px;
     }
 
     .chip {
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
       border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.9);
       color: var(--text-muted);
     }
 
@@ -371,16 +376,67 @@
       font-size: 10px;
       padding: 2px 6px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
+      background: var(--accent-soft);
       color: var(--accent);
     }
 
-    /* Forms (bottom sheet) */
+    .field-group {
+      margin-bottom: 8px;
+    }
+
+    .field-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .field-input,
+    .field-textarea,
+    .field-select {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      padding: 7px 9px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    body.light-theme .field-input,
+    body.light-theme .field-textarea,
+    body.light-theme .field-select {
+      background: #f9fafb;
+    }
+
+    .field-input:focus,
+    .field-textarea:focus,
+    .field-select:focus {
+      border-color: var(--accent);
+    }
+
+    .field-textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    .field-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .helper-text {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* bottom sheet */
 
     .sheet-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.65);
+      background: rgba(15, 23, 42, 0.7);
       backdrop-filter: blur(8px);
       display: none;
       justify-content: flex-end;
@@ -427,74 +483,22 @@
       background: #f9fafb;
     }
 
-    .field-group {
-      margin-bottom: 8px;
-    }
-
-    .field-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 3px;
-    }
-
-    .field-input,
-    .field-textarea,
-    .field-select {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-main);
-      padding: 7px 9px;
-      font-size: 12px;
-      outline: none;
-    }
-
-    body.light-theme .field-input,
-    body.light-theme .field-textarea,
-    body.light-theme .field-select {
-      background: #f9fafb;
-    }
-
-    .field-input:focus,
-    .field-textarea:focus,
-    .field-select:focus {
-      border-color: var(--accent);
-    }
-
-    .field-textarea {
-      min-height: 48px;
-      resize: vertical;
-    }
-
-    .field-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .helper-text {
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    /* Short goal schedule */
+    /* schedule */
 
     .schedule-list {
-      max-height: 200px;
+      max-height: 220px;
       overflow-y: auto;
       padding-right: 2px;
-      margin-top: 4px;
     }
 
     .schedule-item {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      gap: 6px;
       padding: 4px 0;
       border-bottom: 1px dashed rgba(31, 41, 55, 0.9);
       font-size: 11px;
-      gap: 6px;
     }
 
     .sched-left {
@@ -525,7 +529,7 @@
     .sched-status.done {
       border-color: var(--accent);
       color: var(--accent);
-      background: rgba(34, 197, 94, 0.1);
+      background: rgba(34, 197, 94, 0.08);
     }
 
     .sched-status.skipped {
@@ -561,7 +565,27 @@
       color: var(--accent);
     }
 
-    /* Goals lists / containers */
+    .calendar-chip {
+      font-size: 10px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    body.light-theme .calendar-chip {
+      background: #f9fafb;
+    }
+
+    .calendar-chip.selected {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: rgba(248, 113, 113, 0.1);
+    }
+
+    /* goals */
 
     .goal-type-pill {
       font-size: 10px;
@@ -599,14 +623,66 @@
       color: var(--text-muted);
     }
 
-    .badge-link {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      color: var(--accent);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      white-space: nowrap;
+    .goals-group {
+      margin-bottom: 10px;
+    }
+
+    .goal-box {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    body.light-theme .goal-box {
+      background: #ffffff;
+    }
+
+    .goal-box.done {
+      opacity: 0.6;
+    }
+
+    .goal-box-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .goal-main {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .goal-title-text {
+      font-weight: 500;
+    }
+
+    .goal-actions {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .subtask-list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+    }
+
+    .subtask-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .subtask-toggle {
+      accent-color: var(--accent);
     }
 
     .small-inline {
@@ -614,41 +690,50 @@
       color: var(--text-muted);
     }
 
-    .mono {
-      font-family: "SF Mono", ui-monospace, Menlo, Monaco, Consolas,
-        "Liberation Mono", "Courier New", monospace;
-      font-size: 11px;
-      width: 100%;
-      min-height: 90px;
-      border-radius: 10px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.95);
+    /* progress circle */
+
+    .progress-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--accent) 0deg,
+        var(--accent) 0deg,
+        #020617 0deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
       color: var(--text-main);
-      padding: 6px 8px;
-      resize: vertical;
+      flex-shrink: 0;
     }
 
-    body.light-theme .mono {
-      background: #f9fafb;
+    body.light-theme .progress-circle {
+      background-color: #e5e7eb;
     }
 
-    .mono:focus {
-      border-color: var(--accent);
-      outline: none;
+    .progress-circle-inner {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Analytics */
+    /* analytics */
 
     .analytics-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px 10px;
+      gap: 8px;
       margin-top: 4px;
     }
 
     .analytics-item {
       font-size: 11px;
-      color: var(--text-muted);
     }
 
     .analytics-label {
@@ -657,8 +742,7 @@
     }
 
     .analytics-value {
-      font-size: 12px;
-      color: var(--text-main);
+      font-size: 13px;
       font-weight: 500;
     }
 
@@ -672,21 +756,13 @@
       font-size: 11px;
     }
 
-    .day-label {
-      color: var(--text-main);
-    }
-
-    .day-net {
-      font-weight: 500;
-    }
-
     .day-bar {
       width: 100%;
       height: 6px;
       border-radius: 999px;
       background: #020617;
       overflow: hidden;
-      margin: 3px 0;
+      margin-top: 3px;
     }
 
     body.light-theme .day-bar {
@@ -695,153 +771,59 @@
 
     .day-bar-fill {
       height: 100%;
-      float: left;
-    }
-
-    .day-bar-fill.done {
-      background: var(--accent-strong);
-    }
-
-    .day-bar-fill.skipped {
-      background: var(--danger);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      border-radius: 999px;
-      background: #020617;
-      overflow: hidden;
-      margin: 4px 0;
-    }
-
-    body.light-theme .progress-bar {
-      background: #e5e7eb;
-    }
-
-    .progress-bar-fill {
-      height: 100%;
       background: linear-gradient(90deg, var(--accent), var(--accent-strong));
     }
 
-    /* Subtasks */
+    /* achievements */
 
-    .subtask-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 4px 0 0;
-    }
-
-    .subtask-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-
-    .subtask-item label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-    }
-
-    .subtask-toggle {
-      accent-color: var(--accent);
-    }
-
-    /* Calendar for non-working dates */
-
-    .calendar-chip {
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.95);
-      color: var(--text-muted);
-      cursor: pointer;
-    }
-
-    body.light-theme .calendar-chip {
-      background: #f9fafb;
-    }
-
-    .calendar-chip.selected {
-      border-color: var(--danger);
-      color: var(--danger);
-      background: rgba(248, 113, 113, 0.12);
-    }
-
-    /* Weekly groups and goal "boxes" */
-
-    .week-group {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 8px 10px;
-      margin-bottom: 8px;
-      background: rgba(15, 23, 42, 0.5);
-    }
-
-    body.light-theme .week-group {
-      background: #f9fafb;
-    }
-
-    .week-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .week-toggle {
-      font-size: 14px;
-      opacity: 0.7;
-    }
-
-    .week-body {
-      margin-top: 6px;
-    }
-
-    .goal-box {
+    .badge {
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       padding: 8px 10px;
       margin-bottom: 6px;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 11px;
     }
 
-    body.light-theme .goal-box {
+    body.light-theme .badge {
       background: #ffffff;
     }
 
-    .goal-box.done {
-      opacity: 0.5;
-    }
-
-    .goal-box-header {
+    .badge-header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 6px;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .badge-title {
       font-size: 12px;
+      font-weight: 500;
     }
 
-    .goal-main-title {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .badge-level {
+      font-size: 11px;
+      color: var(--accent);
     }
 
-    .goal-main-title label {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
+    /* mono area */
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      width: 100%;
+      min-height: 80px;
+      border-radius: 10px;
+      border: 1px solid var(--border-soft);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-main);
+      padding: 6px 8px;
+      resize: vertical;
     }
 
-    .goal-done-toggle {
-      accent-color: var(--accent);
+    body.light-theme .mono {
+      background: #f9fafb;
     }
   </style>
 </head>
@@ -852,20 +834,22 @@
         <div class="app-title">Core Tracker</div>
         <div class="app-subtitle">финансы · цели · дисциплина</div>
       </div>
-      <button class="btn btn-small btn-outline" id="btn-backup">экспорт / импорт</button>
+      <div class="header-actions">
+        <button class="icon-btn" id="btn-settings">⚙</button>
+      </div>
     </header>
 
     <nav class="nav-tabs">
       <div class="nav-tab active" data-tab="finance">Финансы</div>
       <div class="nav-tab" data-tab="goals">Цели</div>
       <div class="nav-tab" data-tab="analytics">Аналитика</div>
-      <div class="nav-tab" data-tab="settings">Настройки</div>
+      <div class="nav-tab" data-tab="achievements">Достижения</div>
     </nav>
 
     <main class="content" id="content"></main>
   </div>
 
-  <!-- Bottom sheets (modals) -->
+  <!-- bottom sheet -->
   <div class="sheet-backdrop" id="sheet-backdrop">
     <div class="sheet" id="sheet">
       <div class="sheet-header">
@@ -877,21 +861,24 @@
   </div>
 
   <script>
-    // ====== STATE & STORAGE ======
-
-    const STORAGE_KEY = "core_tracker_state_v1";
-    const THEME_KEY = "core_tracker_theme_mode"; // auto | dark | light
+    const STORAGE_KEY = "core_tracker_state_v2";
+    const THEME_KEY = "core_tracker_theme_mode_v2";
 
     const defaultState = {
       balance: 0,
-      transactions: [], // {id, type, amount, note, tags[], dateISO}
-      monthlyPayments: [], // {id,title,amount,dayOfMonth,description,tags[],priority}
-      shortGoals: [], // {id,title,amount,totalAmount,remaining,deadlineISO,createdISO,nonWorkingDates[], schedule:[{dateISO,planned,status}],tags[],priority}
-      goals: [] // {id,title,description,type,createdISO,deadlineISO|null,tags[],linkedShortGoalId|null,subtasks:[],done:false}
+      transactions: [], // {id,type,amount,note,tags,dateISO}
+      monthlyPayments: [], // {id,title,amount,dayOfMonth,description,tags,priority,allocated}
+      shortGoals: [], // {id,title,totalAmount,remaining,deadlineISO,createdISO,schedule[],tags}
+      goals: [], // active goals
+      goalHistory: [], // archived goals
+      expenseTemplates: [], // {id,title,amount}
+      tagConfig: [] // {id,name,icon,color}
     };
 
     let state = loadState();
-    let themeMode = loadThemeMode(); // 'auto' | 'dark' | 'light'
+    let themeMode = loadThemeMode();
+    let activeTab = "finance";
+    let analyticsMode = "finance";
 
     function loadState() {
       try {
@@ -899,24 +886,26 @@
         if (!raw) return structuredClone(defaultState);
         const parsed = JSON.parse(raw);
         const merged = { ...structuredClone(defaultState), ...parsed };
-
-        merged.shortGoals = (merged.shortGoals || []).map((g) => ({
-          nonWorkingDates: [],
-          priority: false,
-          ...g
-        }));
         merged.monthlyPayments = (merged.monthlyPayments || []).map((p) => ({
+          allocated: 0,
           priority: false,
           ...p
+        }));
+        merged.shortGoals = (merged.shortGoals || []).map((g) => ({
+          schedule: [],
+          ...g
         }));
         merged.goals = (merged.goals || []).map((g) => ({
           subtasks: [],
           done: false,
           ...g
         }));
+        merged.goalHistory = merged.goalHistory || [];
+        merged.expenseTemplates = merged.expenseTemplates || [];
+        merged.tagConfig = merged.tagConfig || [];
         return merged;
       } catch (e) {
-        console.error("Failed to load state", e);
+        console.error(e);
         return structuredClone(defaultState);
       }
     }
@@ -928,9 +917,9 @@
 
     function loadThemeMode() {
       try {
-        const val = localStorage.getItem(THEME_KEY);
-        if (val === "dark" || val === "light" || val === "auto") return val;
-      } catch (e) {}
+        const raw = localStorage.getItem(THEME_KEY);
+        if (raw === "dark" || raw === "light" || raw === "auto") return raw;
+      } catch {}
       return "auto";
     }
 
@@ -957,22 +946,39 @@
 
     applyTheme();
 
-    // ====== UTILITIES ======
-
     function uuid() {
       return Math.random().toString(36).slice(2) + Date.now().toString(36);
     }
 
-    function formatDate(dateISO) {
-      const d = new Date(dateISO);
-      if (Number.isNaN(d.getTime())) return "";
-      const day = String(d.getDate()).padStart(2, "0");
-      const month = String(d.getMonth() + 1).padStart(2, "0");
-      return `${day}.${month}`;
-    }
-
     function todayISO() {
       return new Date().toISOString().slice(0, 10);
+    }
+
+    function formatDate(dateISO) {
+      if (!dateISO) return "";
+      const d = new Date(dateISO);
+      if (Number.isNaN(d.getTime())) return "";
+      const dd = String(d.getDate()).padStart(2, "0");
+      const mm = String(d.getMonth() + 1).padStart(2, "0");
+      return `${dd}.${mm}`;
+    }
+
+    function weekdayShort(dateISO) {
+      const d = new Date(dateISO);
+      const map = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+      return map[d.getDay()];
+    }
+
+    function compareISO(a, b) {
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    }
+
+    function addDaysISO(dateISO, days) {
+      const d = new Date(dateISO);
+      d.setDate(d.getDate() + days);
+      return d.toISOString().slice(0, 10);
     }
 
     function parseTags(str) {
@@ -987,1064 +993,28 @@
       if (!tags || !tags.length) return "";
       return (
         `<div class="chip-row">` +
-        tags.map((t) => `<span class="chip">#${t}</span>`).join("") +
+        tags
+          .map((t) => {
+            const conf = state.tagConfig.find((c) => c.name === t);
+            const icon = conf?.icon || "";
+            return `<span class="chip">${icon ? icon + " " : ""}#${t}</span>`;
+          })
+          .join("") +
         `</div>`
       );
     }
 
-    function compareDateISO(a, b) {
-      if (a < b) return -1;
-      if (a > b) return 1;
-      return 0;
-    }
-
-    function addDaysISO(dateISO, days) {
-      const d = new Date(dateISO);
-      d.setDate(d.getDate() + days);
-      return d.toISOString().slice(0, 10);
-    }
-
-    function getWeekKey(dateISO) {
-      const d = new Date(dateISO);
-      const year = d.getFullYear();
-      // простая неделя: номер недели в году (не строго ISO, но нам норм)
-      const oneJan = new Date(year, 0, 1);
-      const diff = d - oneJan;
-      const day = Math.floor(diff / (1000 * 60 * 60 * 24)) + oneJan.getDay();
-      const week = Math.floor(day / 7) + 1;
-      return `${year}-W${String(week).padStart(2, "0")}`;
-    }
-
-    function weekLabelFromKey(key) {
-      const [yearPart, weekPart] = key.split("-W");
-      const year = parseInt(yearPart, 10) || new Date().getFullYear();
-      const week = parseInt(weekPart, 10) || 1;
-      // грубо считаем неделю как диапазон
-      const firstJan = new Date(year, 0, 1);
-      const start = new Date(firstJan.getTime() + (week - 1) * 7 * 24 * 60 * 60 * 1000);
-      const end = new Date(start.getTime() + 6 * 24 * 60 * 60 * 1000);
-      const startLabel = `${String(start.getDate()).padStart(2, "0")}.${String(
-        start.getMonth() + 1
-      ).padStart(2, "0")}`;
-      const endLabel = `${String(end.getDate()).padStart(2, "0")}.${String(
-        end.getMonth() + 1
-      ).padStart(2, "0")}`;
-      return `Неделя ${startLabel}–${endLabel}`;
-    }
-
-    // schedule generator
-    function generateSchedule(createdISO, deadlineISO, totalAmount, nonWorkingDates) {
-      const skipSet = new Set(nonWorkingDates || []);
-      const scheduleDates = [];
-      let cursor = createdISO;
-      while (compareDateISO(cursor, deadlineISO) <= 0) {
-        if (!skipSet.has(cursor)) {
-          scheduleDates.push(cursor);
-        }
-        cursor = addDaysISO(cursor, 1);
-      }
-      const workDaysCount = scheduleDates.length || 1;
-      const perDayRaw = totalAmount / workDaysCount;
-      const perDay = Math.floor(perDayRaw);
-      const remainder = Math.round(totalAmount - perDay * workDaysCount);
-
-      return scheduleDates.map((d, idx) => ({
-        dateISO: d,
-        planned: perDay + (idx === 0 ? remainder : 0),
-        status: "pending"
-      }));
-    }
-
-    // ====== ANALYTICS HELPERS ======
-
-    function computeFinanceAnalytics() {
-      const today = todayISO();
-      const [y, m] = today.split("-");
-      const monthPrefix = `${y}-${m}`;
-      const txMonth = state.transactions.filter((tx) =>
-        tx.dateISO && tx.dateISO.startsWith(monthPrefix)
-      );
-
-      let monthIncome = 0;
-      let monthExpense = 0;
-      const tagStats = {};
-
-      txMonth.forEach((tx) => {
-        const sign = tx.type === "income" ? 1 : -1;
-        if (tx.type === "income") monthIncome += tx.amount;
-        else monthExpense += tx.amount;
-        (tx.tags || []).forEach((tag) => {
-          if (!tagStats[tag]) tagStats[tag] = 0;
-          tagStats[tag] += sign * tx.amount;
-        });
-      });
-
-      const tagEntries = Object.entries(tagStats).sort(
-        (a, b) => Math.abs(b[1]) - Math.abs(a[1])
-      );
-      const topTags = tagEntries.slice(0, 3).map(([tag, val]) => ({
-        tag,
-        value: val
-      }));
-
-      const todayDate = new Date(today);
-      const todayDay = todayDate.getDate();
-      const upcomingPayments = state.monthlyPayments.filter((p) => {
-        return p.dayOfMonth >= todayDay && p.dayOfMonth <= todayDay + 3;
-      });
-
-      const allShort = state.shortGoals.length;
-      const completedShort = state.shortGoals.filter((g) => g.remaining <= 0)
-        .length;
-      const activeShort = allShort - completedShort;
-
-      // текущие задачи по фин. целям на сегодня
-      let tasksTodayCount = 0;
-      let tasksTodayPlanned = 0;
-      state.shortGoals.forEach((g) => {
-        (g.schedule || []).forEach((d) => {
-          if (d.dateISO === today && d.status === "pending") {
-            tasksTodayCount += 1;
-            tasksTodayPlanned += d.planned || 0;
-          }
-        });
-      });
-
-      // дни с транзакциями — серия
-      const txDaysSet = new Set(
-        state.transactions.map((tx) => tx.dateISO).filter(Boolean)
-      );
-      let currentStreak = 0;
-      let cursor = today;
-      for (let i = 0; i < 60; i++) {
-        if (txDaysSet.has(cursor)) {
-          currentStreak += 1;
-          cursor = addDaysISO(cursor, -1);
-        } else {
-          break;
-        }
-      }
-      const totalActiveDays = txDaysSet.size;
-
-      let streakText = "можно начать серию с сегодняшнего дня";
-      if (currentStreak >= 7) {
-        streakText = "огонь: неделя без провалов по деньгам";
-      } else if (currentStreak >= 3) {
-        streakText = "есть серия: держишь ритм, не сбавляй";
-      } else if (currentStreak >= 1) {
-        streakText = "старт есть: важен не идеал, а продолжение";
-      }
-
-      // последние 7 дней
-      const lastDays = [];
-      for (let offset = 6; offset >= 0; offset--) {
-        const dateISO = addDaysISO(today, -offset);
-        const txDay = state.transactions.filter((tx) => tx.dateISO === dateISO);
-        let net = 0;
-        txDay.forEach((tx) => {
-          net += tx.type === "income" ? tx.amount : -tx.amount;
-        });
-
-        let tasksTotal = 0;
-        let tasksDone = 0;
-        let tasksSkipped = 0;
-        state.shortGoals.forEach((g) => {
-          (g.schedule || []).forEach((d) => {
-            if (d.dateISO === dateISO) {
-              tasksTotal += 1;
-              if (d.status === "done") tasksDone += 1;
-              if (d.status === "skipped") tasksSkipped += 1;
-            }
-          });
-        });
-
-        lastDays.push({
-          dateISO,
-          net,
-          tasksTotal,
-          tasksDone,
-          tasksSkipped
-        });
-      }
-
-      return {
-        monthIncome,
-        monthExpense,
-        monthNet: monthIncome - monthExpense,
-        hasMonthData: txMonth.length > 0,
-        topTags,
-        upcomingPaymentsCount: upcomingPayments.length,
-        allShort,
-        completedShort,
-        activeShort,
-        tasksTodayCount,
-        tasksTodayPlanned,
-        currentStreak,
-        totalActiveDays,
-        streakText,
-        lastDays
-      };
-    }
-
-    function computeGoalsAnalytics() {
-      const goalsByType = state.goals.reduce(
-        (acc, g) => {
-          acc[g.type] = (acc[g.type] || 0) + 1;
-          return acc;
-        },
-        { day: 0, week: 0, month: 0, none: 0 }
-      );
-
-      let totalSubtasks = 0;
-      let doneSubtasks = 0;
-      state.goals.forEach((g) => {
-        const subs = g.subtasks || [];
-        totalSubtasks += subs.length;
-        doneSubtasks += subs.filter((s) => s.done).length;
-      });
-
-      const progressSubtasks =
-        totalSubtasks > 0 ? Math.round((doneSubtasks / totalSubtasks) * 100) : 0;
-
-      const recentGoals = [...state.goals]
-        .sort((a, b) => (a.createdISO < b.createdISO ? 1 : -1))
-        .slice(0, 5)
-        .map((g) => {
-          const subs = g.subtasks || [];
-          const done = subs.filter((s) => s.done).length;
-          return {
-            id: g.id,
-            title: g.title,
-            type: g.type,
-            createdISO: g.createdISO,
-            deadlineISO: g.deadlineISO,
-            subtasksTotal: subs.length,
-            subtasksDone: done
-          };
-        });
-
-      return {
-        goalsByType,
-        totalSubtasks,
-        doneSubtasks,
-        progressSubtasks,
-        recentGoals
-      };
-    }
-
-    // ====== RENDER ROOT ======
-
-    let activeTab = "finance";
-    let analyticsMode = "finance"; // finance | goals
-    const contentEl = document.getElementById("content");
-
-    // для сворачивания недель
-    const expandedWeeks = {};
-
-    function render() {
-      if (activeTab === "finance") {
-        renderFinance();
-      } else if (activeTab === "goals") {
-        renderGoals();
-      } else if (activeTab === "analytics") {
-        renderAnalytics();
-      } else {
-        renderSettings();
-      }
-    }
-
-    // ====== RENDER FINANCE TAB ======
-
-    function renderFinance() {
-      contentEl.innerHTML = "";
-
-      const today = todayISO();
-      const todayDate = new Date(today);
-
-      // Balance card
-      const balanceCard = document.createElement("section");
-      balanceCard.className = "card";
-      balanceCard.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">
-              Баланс
-              <span class="pill">
-                <span class="tag-dot"></span>
-                на руках
-              </span>
-            </div>
-            <div class="card-subtitle">ежедневный учёт доходов и расходов</div>
-          </div>
-          <button class="btn btn-small btn-outline" id="btn-set-balance">править</button>
-        </div>
-        <div class="balance-value">${state.balance.toLocaleString("ru-RU")} ₽</div>
-        <div class="balance-label">текущий баланс (можно настроить вручную, без операции)</div>
-        <div class="btn-row">
-          <button class="btn btn-primary" id="btn-add-income">+ доход</button>
-          <button class="btn btn-ghost" id="btn-add-expense">− расход</button>
-        </div>
-        <div class="section-title">
-          <span>История</span>
-        </div>
-        <div class="list" id="tx-list"></div>
-      `;
-      contentEl.appendChild(balanceCard);
-
-      const txListEl = balanceCard.querySelector("#tx-list");
-      if (!state.transactions.length) {
-        txListEl.innerHTML = `<div class="empty">операций пока нет</div>`;
-      } else {
-        const sortedTx = [...state.transactions].sort((a, b) =>
-          a.dateISO < b.dateISO ? 1 : -1
-        );
-        txListEl.innerHTML = sortedTx
-          .map((tx) => {
-            return `
-            <div class="tx-item">
-              <div class="tx-main">
-                <span>${tx.note || "(без описания)"}</span>
-                <span class="tx-amount ${tx.type}">${
-              tx.type === "income" ? "+" : "−"
-            }${tx.amount.toLocaleString("ru-RU")} ₽</span>
-              </div>
-              <div class="tx-meta">
-                <span>${formatDate(tx.dateISO)}</span>
-                <span>${tx.tags && tx.tags.length ? tx.tags.join(", ") : ""}</span>
-              </div>
-            </div>
-          `;
-          })
-          .join("");
-      }
-
-      // Monthly payments
-      const paymentsCard = document.createElement("section");
-      paymentsCard.className = "card";
-      paymentsCard.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">Ежемесячные платежи</div>
-            <div class="card-subtitle">подписки, квартира, обязательства</div>
-          </div>
-          <button class="btn btn-small btn-outline" id="btn-add-monthly">+ добавить</button>
-        </div>
-        <div class="list" id="payments-list"></div>
-      `;
-      contentEl.appendChild(paymentsCard);
-
-      const paymentsListEl = paymentsCard.querySelector("#payments-list");
-      if (!state.monthlyPayments.length) {
-        paymentsListEl.innerHTML =
-          '<div class="empty">пока нет ежемесячных целей</div>';
-      } else {
-        const sorted = [...state.monthlyPayments].sort((a, b) => {
-          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
-          if (b.amount !== a.amount) return b.amount - a.amount;
-          return a.dayOfMonth - b.dayOfMonth;
-        });
-        paymentsListEl.innerHTML = sorted
-          .map((p) => {
-            let dueDate = new Date(todayDate.getFullYear(), todayDate.getMonth(), p.dayOfMonth);
-            if (dueDate < todayDate) {
-              dueDate = new Date(todayDate.getFullYear(), todayDate.getMonth() + 1, p.dayOfMonth);
-            }
-            const diffMs = dueDate - todayDate;
-            const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
-            const diffLabel =
-              diffDays === 0
-                ? "сегодня"
-                : diffDays > 0
-                ? `через ${diffDays} дн.`
-                : "";
-            return `
-            <div class="payment-item">
-              <div class="tx-main">
-                <span>${p.title}</span>
-                <span class="tx-amount expense">${p.amount.toLocaleString(
-                  "ru-RU"
-                )} ₽</span>
-              </div>
-              <div class="tx-meta">
-                <span>${p.dayOfMonth}-го числа${
-              diffLabel ? ", " + diffLabel : ""
-            }</span>
-                <span></span>
-              </div>
-              ${
-                p.description
-                  ? `<div class="muted">${p.description}</div>`
-                  : ""
-              }
-              <div class="chip-row">
-                ${
-                  p.priority
-                    ? '<span class="pill-small">приоритет</span>'
-                    : ""
-                }
-                ${tagsToHTML(p.tags)}
-                <button class="btn btn-small btn-outline" data-delete-monthly="${
-                  p.id
-                }">удалить</button>
-              </div>
-            </div>
-          `;
-          })
-          .join("");
-      }
-
-      // Short financial goals
-      const goalsCard = document.createElement("section");
-      goalsCard.className = "card";
-      goalsCard.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">Краткосрочные фин. цели</div>
-            <div class="card-subtitle">накопить к дате, расписание по дням</div>
-          </div>
-          <button class="btn btn-small btn-outline" id="btn-add-short-goal">+ цель</button>
-        </div>
-        <div class="list" id="short-goals-list"></div>
-      `;
-      contentEl.appendChild(goalsCard);
-
-      const shortListEl = goalsCard.querySelector("#short-goals-list");
-      if (!state.shortGoals.length) {
-        shortListEl.innerHTML =
-          '<div class="empty">краткосрочных целей пока нет</div>';
-      } else {
-        const sorted = [...state.shortGoals].sort((a, b) => {
-          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
-          const cmpDeadline = compareDateISO(a.deadlineISO, b.deadlineISO);
-          if (cmpDeadline !== 0) return cmpDeadline;
-          return a.createdISO < b.createdISO ? 1 : -1;
-        });
-        shortListEl.innerHTML = sorted
-          .map((g) => {
-            const daysLeft =
-              (new Date(g.deadlineISO) - todayDate) /
-              (1000 * 60 * 60 * 24);
-            const pendingCount = g.schedule.filter(
-              (d) => d.status === "pending"
-            ).length;
-            const perDay =
-              pendingCount > 0 ? g.remaining / pendingCount : 0;
-            return `
-            <div class="goal-item">
-              <div class="tx-main">
-                <span>${g.title}</span>
-                <span class="tx-amount income">${g.remaining.toLocaleString(
-                  "ru-RU"
-                )} ₽</span>
-              </div>
-              <div class="tx-meta">
-                <span>дедлайн: ${formatDate(g.deadlineISO)}</span>
-                <span>${
-                  daysLeft >= 0
-                    ? `осталось ~${Math.ceil(daysLeft)} дн`
-                    : "дедлайн прошёл"
-                }</span>
-              </div>
-              <div class="chip-row">
-                <span class="pill-small">план в день ~ ${perDay.toFixed(
-                  0
-                )} ₽</span>
-                ${
-                  g.priority
-                    ? '<span class="pill-small">приоритет</span>'
-                    : ""
-                }
-                <button class="btn btn-small btn-outline" data-open-goal="${
-                  g.id
-                }">расписание</button>
-                <button class="btn btn-small btn-outline" data-delete-short="${
-                  g.id
-                }">удалить</button>
-              </div>
-              ${tagsToHTML(g.tags)}
-            </div>
-          `;
-          })
-          .join("");
-      }
-
-      // handlers
-      balanceCard
-        .querySelector("#btn-add-income")
-        .addEventListener("click", () => openTxSheet("income"));
-      balanceCard
-        .querySelector("#btn-add-expense")
-        .addEventListener("click", () => openTxSheet("expense"));
-      balanceCard
-        .querySelector("#btn-set-balance")
-        .addEventListener("click", () => openBalanceSheet());
-
-      paymentsCard
-        .querySelector("#btn-add-monthly")
-        .addEventListener("click", () => openMonthlySheet());
-      paymentsCard.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-delete-monthly]");
-        if (!btn) return;
-        const id = btn.getAttribute("data-delete-monthly");
-        if (!id) return;
-        if (!confirm("Удалить этот платёж?")) return;
-        state.monthlyPayments = state.monthlyPayments.filter((p) => p.id !== id);
-        saveState();
-      });
-
-      goalsCard
-        .querySelector("#btn-add-short-goal")
-        .addEventListener("click", () => openShortGoalSheet());
-      goalsCard.addEventListener("click", (e) => {
-        const openBtn = e.target.closest("[data-open-goal]");
-        if (openBtn) {
-          const id = openBtn.getAttribute("data-open-goal");
-          const goal = state.shortGoals.find((g) => g.id === id);
-          if (goal) openShortGoalScheduleSheet(goal);
-          return;
-        }
-        const delBtn = e.target.closest("[data-delete-short]");
-        if (delBtn) {
-          const id = delBtn.getAttribute("data-delete-short");
-          if (!id) return;
-          if (!confirm("Удалить эту краткосрочную цель?")) return;
-          state.shortGoals = state.shortGoals.filter((g) => g.id !== id);
-          // если какая-то задача была привязана к этой фин. цели — отвяжем
-          state.goals.forEach((goal) => {
-            if (goal.linkedShortGoalId === id) {
-              goal.linkedShortGoalId = null;
-            }
-          });
-          saveState();
-        }
-      });
-    }
-
-    // ====== RENDER GOALS TAB ======
-
-    function renderGoals() {
-      contentEl.innerHTML = "";
-
-      const goalsCard = document.createElement("section");
-      goalsCard.className = "card";
-      goalsCard.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">Задачи и цели</div>
-            <div class="card-subtitle">день · неделя · месяц · без срока</div>
-          </div>
-          <button class="btn btn-small btn-outline" id="btn-add-goal">+ цель</button>
-        </div>
-        <div class="section-title">
-          <span>По неделям</span>
-        </div>
-        <div id="goals-groups"></div>
-      `;
-      contentEl.appendChild(goalsCard);
-
-      const container = goalsCard.querySelector("#goals-groups");
-      if (!state.goals.length) {
-        container.innerHTML = `<div class="empty">целей пока нет</div>`;
-      } else {
-        const sorted = [...state.goals].sort((a, b) => {
-          // сорт по дате создания, новые наверх внутри недель
-          return a.createdISO < b.createdISO ? 1 : -1;
-        });
-
-        const groups = {};
-        sorted.forEach((g) => {
-          const key = getWeekKey(g.createdISO || todayISO());
-          if (!groups[key]) groups[key] = [];
-          groups[key].push(g);
-        });
-
-        const keys = Object.keys(groups).sort((a, b) => (a < b ? 1 : -1));
-
-        container.innerHTML = "";
-
-        keys.forEach((key, idx) => {
-          if (expandedWeeks[key] === undefined) {
-            expandedWeeks[key] = idx === 0; // первая неделя раскрыта
-          }
-          const groupEl = document.createElement("div");
-          groupEl.className = "week-group";
-          const label = weekLabelFromKey(key);
-          groupEl.innerHTML = `
-            <div class="week-header" data-week-key="${key}">
-              <span>${label}</span>
-              <span class="week-toggle">${
-                expandedWeeks[key] ? "▾" : "▸"
-              }</span>
-            </div>
-            <div class="week-body" style="display:${
-              expandedWeeks[key] ? "block" : "none"
-            }"></div>
-          `;
-          const body = groupEl.querySelector(".week-body");
-          groups[key].forEach((g) => {
-            const subs = g.subtasks || [];
-            const doneSubs = subs.filter((s) => s.done).length;
-            const allSubsDone = subs.length > 0 && doneSubs === subs.length;
-            if (allSubsDone && !g.done) {
-              g.done = true;
-            }
-            const goalBox = document.createElement("div");
-            goalBox.className = "goal-box" + (g.done ? " done" : "");
-            goalBox.innerHTML = `
-              <div class="goal-box-header">
-                <div class="goal-main-title">
-                  <label>
-                    <input type="checkbox"
-                      class="goal-done-toggle"
-                      data-goal-id="${g.id}"
-                      ${g.done ? "checked" : ""} />
-                    <span>${g.title}</span>
-                  </label>
-                </div>
-                <span class="goal-type-pill" data-type="${g.type}">
-                  ${
-                    g.type === "day"
-                      ? "день"
-                      : g.type === "week"
-                      ? "неделя"
-                      : g.type === "month"
-                      ? "месяц"
-                      : "без срока"
-                  }
-                </span>
-              </div>
-              <div class="tx-meta">
-                <span>создано: ${formatDate(g.createdISO)}</span>
-                <span>${
-                  g.deadlineISO ? "до " + formatDate(g.deadlineISO) : ""
-                }</span>
-              </div>
-              ${
-                g.linkedShortGoalId
-                  ? `<div class="chip-row"><span class="badge-link">есть финансовая цель</span></div>`
-                  : ""
-              }
-              ${g.description ? `<div class="muted">${g.description}</div>` : ""}
-              ${
-                subs.length
-                  ? `<ul class="subtask-list">
-                      ${subs
-                        .map(
-                          (s) => `
-                        <li class="subtask-item">
-                          <label>
-                            <input type="checkbox"
-                              class="subtask-toggle"
-                              data-goal-id="${g.id}"
-                              data-subtask-id="${s.id}"
-                              ${s.done ? "checked" : ""} />
-                            <span>${s.title}</span>
-                          </label>
-                        </li>`
-                        )
-                        .join("")}
-                    </ul>`
-                  : ""
-              }
-              <div class="chip-row">
-                ${tagsToHTML(g.tags)}
-                <button class="btn btn-small btn-outline" data-delete-goal="${
-                  g.id
-                }">удалить</button>
-              </div>
-            `;
-            body.appendChild(goalBox);
-          });
-
-          container.appendChild(groupEl);
-        });
-
-        // обработка разворота недель
-        container.addEventListener("click", (e) => {
-          const header = e.target.closest(".week-header");
-          if (!header) return;
-          const key = header.getAttribute("data-week-key");
-          if (!key) return;
-          expandedWeeks[key] = !expandedWeeks[key];
-          renderGoals();
-        });
-
-        // обработка чекбоксов целей и сабтасков и удаления
-        container.addEventListener("change", (e) => {
-          const goalToggle = e.target.closest(".goal-done-toggle");
-          if (goalToggle) {
-            const id = goalToggle.getAttribute("data-goal-id");
-            const goal = state.goals.find((g) => g.id === id);
-            if (!goal) return;
-            goal.done = goalToggle.checked;
-            saveState();
-            return;
-          }
-          const subToggle = e.target.closest(".subtask-toggle");
-          if (subToggle) {
-            const goalId = subToggle.getAttribute("data-goal-id");
-            const subId = subToggle.getAttribute("data-subtask-id");
-            const goal = state.goals.find((g) => g.id === goalId);
-            if (!goal) return;
-            const sub = (goal.subtasks || []).find((s) => s.id === subId);
-            if (!sub) return;
-            sub.done = subToggle.checked;
-            const subs = goal.subtasks || [];
-            const allDone = subs.length > 0 && subs.every((s) => s.done);
-            goal.done = allDone;
-            saveState();
-            return;
-          }
-        });
-
-        container.addEventListener("click", (e) => {
-          const delBtn = e.target.closest("[data-delete-goal]");
-          if (!delBtn) return;
-          const id = delBtn.getAttribute("data-delete-goal");
-          if (!id) return;
-          if (!confirm("Удалить эту цель?")) return;
-          const goal = state.goals.find((g) => g.id === id);
-          const linkedId = goal ? goal.linkedShortGoalId : null;
-          state.goals = state.goals.filter((g) => g.id !== id);
-          if (linkedId) {
-            state.shortGoals = state.shortGoals.filter(
-              (sg) => sg.id !== linkedId
-            );
-          }
-          saveState();
-        });
-      }
-
-      goalsCard
-        .querySelector("#btn-add-goal")
-        .addEventListener("click", () => openGoalSheet());
-    }
-
-    // ====== RENDER ANALYTICS TAB ======
-
-    function renderAnalytics() {
-      contentEl.innerHTML = "";
-
-      const card = document.createElement("section");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">Аналитика</div>
-            <div class="card-subtitle">визуальный срез по финансам и целям</div>
-          </div>
-          <div class="btn-row" style="gap:4px;margin:0;">
-            <button class="btn btn-small ${
-              analyticsMode === "finance" ? "btn-primary" : "btn-outline"
-            }" data-analytics-mode="finance">финансы</button>
-            <button class="btn btn-small ${
-              analyticsMode === "goals" ? "btn-primary" : "btn-outline"
-            }" data-analytics-mode="goals">цели</button>
-          </div>
-        </div>
-        <div id="analytics-body"></div>
-      `;
-      contentEl.appendChild(card);
-
-      const body = card.querySelector("#analytics-body");
-      if (analyticsMode === "finance") {
-        renderFinanceAnalytics(body);
-      } else {
-        renderGoalsAnalytics(body);
-      }
-
-      card.querySelectorAll("[data-analytics-mode]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const mode = btn.getAttribute("data-analytics-mode");
-          if (mode && mode !== analyticsMode) {
-            analyticsMode = mode;
-            renderAnalytics();
-          }
-        });
-      });
-    }
-
-    function renderFinanceAnalytics(container) {
-      const a = computeFinanceAnalytics();
-
-      let html = "";
-
-      html += `
-        <div class="section-title">
-          <span>Текущий месяц</span>
+    function progressCircleHTML(pct) {
+      const clamped = Math.max(0, Math.min(100, Math.round(pct || 0)));
+      const deg = (clamped / 100) * 360;
+      return `
+        <div class="progress-circle" style="background:conic-gradient(var(--accent) 0deg,var(--accent) ${deg}deg,#020617 ${deg}deg);">
+          <div class="progress-circle-inner">${clamped}%</div>
         </div>
       `;
-
-      if (a.hasMonthData) {
-        html += `
-          <div class="analytics-grid">
-            <div class="analytics-item">
-              <div class="analytics-label">доход</div>
-              <div class="analytics-value">+${a.monthIncome.toLocaleString(
-                "ru-RU"
-              )} ₽</div>
-            </div>
-            <div class="analytics-item">
-              <div class="analytics-label">расход</div>
-              <div class="analytics-value">−${a.monthExpense.toLocaleString(
-                "ru-RU"
-              )} ₽</div>
-            </div>
-            <div class="analytics-item">
-              <div class="analytics-label">итог месяца</div>
-              <div class="analytics-value">${(a.monthNet >= 0 ? "+" : "−") +
-                Math.abs(a.monthNet).toLocaleString("ru-RU")} ₽</div>
-            </div>
-            <div class="analytics-item">
-              <div class="analytics-label">активные дни</div>
-              <div class="analytics-value">${a.totalActiveDays}</div>
-            </div>
-          </div>
-        `;
-      } else {
-        html += `<div class="empty">в этом месяце пока нет данных по операциям</div>`;
-      }
-
-      html += `
-        <div class="section-title" style="margin-top:8px;">
-          <span>Сегодня и ближайшие дни</span>
-        </div>
-        <div class="analytics-grid">
-          <div class="analytics-item">
-            <div class="analytics-label">задачи по целям на сегодня</div>
-            <div class="analytics-value">${a.tasksTodayCount}</div>
-            <div class="helper-text">${
-              a.tasksTodayCount
-                ? "план на сегодня ~ " +
-                  a.tasksTodayPlanned.toLocaleString("ru-RU") +
-                  " ₽"
-                : "на сегодня нет запланированных сумм по целям"
-            }</div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-label">платежи в ближайшие 3 дня</div>
-            <div class="analytics-value">${a.upcomingPaymentsCount}</div>
-          </div>
-        </div>
-        <div class="section-title" style="margin-top:8px;">
-          <span>Краткосрочные цели</span>
-        </div>
-        <div class="analytics-grid">
-          <div class="analytics-item">
-            <div class="analytics-label">фин. цели</div>
-            <div class="analytics-value">${a.activeShort} активных / ${
-        a.allShort
-      }</div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-label">серия по деньгам</div>
-            <div class="analytics-value">${a.currentStreak} дн.</div>
-            <div class="helper-text">${a.streakText}</div>
-          </div>
-        </div>
-        <div class="section-title" style="margin-top:8px;">
-          <span>Последние 7 дней</span>
-        </div>
-      `;
-
-      if (!a.lastDays.length) {
-        html += `<div class="empty">нет данных по дням</div>`;
-      } else {
-        html += a.lastDays
-          .map((d) => {
-            const total = d.tasksTotal || 0;
-            const donePerc = total ? Math.round((d.tasksDone / total) * 100) : 0;
-            const skipPerc = total
-              ? Math.round((d.tasksSkipped / total) * 100)
-              : 0;
-            const netLabel =
-              d.net === 0
-                ? "0 ₽"
-                : (d.net > 0 ? "+" : "−") +
-                  Math.abs(d.net).toLocaleString("ru-RU") +
-                  " ₽";
-            return `
-              <div class="day-row">
-                <div class="day-main">
-                  <span class="day-label">${formatDate(d.dateISO)}</span>
-                  <span class="day-net">${netLabel}</span>
-                </div>
-                <div class="day-bar">
-                  <div class="day-bar-fill done" style="width:${donePerc}%;"></div>
-                  <div class="day-bar-fill skipped" style="width:${skipPerc}%;"></div>
-                </div>
-                <div class="small-inline">
-                  целей: ${total}, сделано: ${d.tasksDone}, пропущено: ${
-              d.tasksSkipped
-            }
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-      }
-
-      html += `
-        <div class="section-title" style="margin-top:8px;">
-          <span>Теги</span>
-        </div>
-      `;
-
-      if (a.topTags.length) {
-        html += `<div class="chip-row">`;
-        html += a.topTags
-          .map(
-            (t) => `
-          <span class="chip">#${t.tag} · ${
-              t.value >= 0 ? "+" : "−"
-            }${Math.abs(t.value).toLocaleString("ru-RU")} ₽</span>
-        `
-          )
-          .join("");
-        html += `</div>`;
-      } else {
-        html += `<div class="empty">ещё нет статистики по тегам</div>`;
-      }
-
-      container.innerHTML = html;
     }
 
-    function renderGoalsAnalytics(container) {
-      const a = computeGoalsAnalytics();
-
-      let html = `
-        <div class="section-title">
-          <span>Общий срез</span>
-        </div>
-        <div class="analytics-grid">
-          <div class="analytics-item">
-            <div class="analytics-label">цели по типам</div>
-            <div class="analytics-value">
-              д: ${a.goalsByType.day} · н: ${a.goalsByType.week} · м: ${
-        a.goalsByType.month
-      } · б/с: ${a.goalsByType.none}
-            </div>
-          </div>
-          <div class="analytics-item">
-            <div class="analytics-label">микроцели всего</div>
-            <div class="analytics-value">${a.totalSubtasks}</div>
-          </div>
-        </div>
-        <div class="section-title" style="margin-top:8px;">
-          <span>Прогресс по микроцелям</span>
-        </div>
-      `;
-
-      if (a.totalSubtasks === 0) {
-        html += `<div class="empty">микроцели пока не созданы</div>`;
-      } else {
-        html += `
-          <div class="progress-bar">
-            <div class="progress-bar-fill" style="width:${a.progressSubtasks}%;"></div>
-          </div>
-          <div class="small-inline">
-            выполнено ${a.doneSubtasks} из ${a.totalSubtasks} (${a.progressSubtasks}%)
-          </div>
-        `;
-      }
-
-      html += `
-        <div class="section-title" style="margin-top:8px;">
-          <span>Последние цели</span>
-        </div>
-      `;
-
-      if (!a.recentGoals.length) {
-        html += `<div class="empty">целей пока нет</div>`;
-      } else {
-        html += a.recentGoals
-          .map((g) => {
-            return `
-            <div class="goal-item">
-              <div class="tx-main">
-                <span>${g.title}</span>
-                <span class="goal-type-pill" data-type="${g.type}">
-                  ${
-                    g.type === "day"
-                      ? "день"
-                      : g.type === "week"
-                      ? "неделя"
-                      : g.type === "month"
-                      ? "месяц"
-                      : "без срока"
-                  }
-                </span>
-              </div>
-              <div class="tx-meta">
-                <span>создано: ${formatDate(g.createdISO)}</span>
-                <span>${
-                  g.deadlineISO ? "до " + formatDate(g.deadlineISO) : ""
-                }</span>
-              </div>
-              <div class="small-inline">
-                микроцели: ${g.subtasksDone} / ${g.subtasksTotal}
-              </div>
-            </div>
-          `;
-          })
-          .join("");
-      }
-
-      container.innerHTML = html;
-    }
-
-    // ====== SETTINGS TAB ======
-
-    function renderSettings() {
-      contentEl.innerHTML = "";
-
-      const card = document.createElement("section");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="card-header">
-          <div>
-            <div class="card-title">Настройки</div>
-            <div class="card-subtitle">тема, данные, базовое управление</div>
-          </div>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Тема</div>
-          <select id="theme-select" class="field-select">
-            <option value="auto">авто (по системе)</option>
-            <option value="dark">тёмная</option>
-            <option value="light">светлая</option>
-          </select>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Данные</div>
-          <button class="btn btn-ghost" id="btn-clear-all">очистить все данные</button>
-          <div class="helper-text">удалит все финансы, цели и настройки приложения (кроме темы)</div>
-        </div>
-      `;
-      contentEl.appendChild(card);
-
-      const themeSelect = card.querySelector("#theme-select");
-      themeSelect.value = themeMode;
-      themeSelect.addEventListener("change", () => {
-        saveThemeMode(themeSelect.value);
-      });
-
-      card
-        .querySelector("#btn-clear-all")
-        .addEventListener("click", () => {
-          if (
-            !confirm(
-              "Точно очистить все данные? Это удалит все цели, финансы и историю."
-            )
-          )
-            return;
-          localStorage.removeItem(STORAGE_KEY);
-          state = loadState();
-          render();
-        });
-    }
-
-    // ====== SHEET (MODAL) UTILS ======
+    // bottom sheet
 
     const backdropEl = document.getElementById("sheet-backdrop");
     const sheetTitleEl = document.getElementById("sheet-title");
@@ -2067,83 +1037,596 @@
       sheetBodyEl.innerHTML = "";
     }
 
-    // ====== SHEETS IMPLEMENTATION ======
+    // nav
 
-    // Add income/expense
-    function openTxSheet(type) {
-      openSheet(type === "income" ? "Добавить доход" : "Добавить расход", `
+    const contentEl = document.getElementById("content");
+
+    document.querySelectorAll(".nav-tab").forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const t = tab.getAttribute("data-tab");
+        if (t === activeTab) return;
+        activeTab = t;
+        document
+          .querySelectorAll(".nav-tab")
+          .forEach((n) => n.classList.remove("active"));
+        tab.classList.add("active");
+        render();
+      });
+    });
+
+    // SETTINGS BUTTON
+
+    document.getElementById("btn-settings").addEventListener("click", () => {
+      openSettingsSheet();
+    });
+
+    // RENDER ROOT
+
+    function render() {
+      if (activeTab === "finance") renderFinance();
+      else if (activeTab === "goals") renderGoals();
+      else if (activeTab === "analytics") renderAnalytics();
+      else renderAchievements();
+    }
+
+    // ===== FINANCE TAB =====
+
+    function expectedBalanceFromTx() {
+      let total = 0;
+      for (const tx of state.transactions) {
+        total += tx.type === "income" ? tx.amount : -tx.amount;
+      }
+      return total;
+    }
+
+    function renderFinance() {
+      contentEl.innerHTML = "";
+
+      const untracked = state.balance - expectedBalanceFromTx();
+
+      // balance card
+      const balanceCard = document.createElement("section");
+      balanceCard.className = "card";
+      balanceCard.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              Баланс
+              <span class="pill">
+                <span class="tag-dot"></span>
+                на руках
+              </span>
+            </div>
+            <div class="card-subtitle">реальный баланс без магии</div>
+          </div>
+          <button class="btn btn-small btn-outline" id="btn-set-balance">править</button>
+        </div>
+        <div class="balance-value">${state.balance.toLocaleString(
+          "ru-RU"
+        )} ₽</div>
+        <div class="balance-label">текущий баланс на руках</div>
+        ${
+          untracked !== 0
+            ? `<div class="helper-text">неучтённая сумма: ${untracked > 0 ? "+" : "−"}${Math.abs(
+                untracked
+              ).toLocaleString(
+                "ru-RU"
+              )} ₽ (значит, не все доходы/расходы записаны)</div>`
+            : ""
+        }
+        <div class="btn-row">
+          <button class="btn btn-primary" id="btn-add-income">+ доход</button>
+          <button class="btn btn-ghost" id="btn-add-expense">− расход</button>
+        </div>
+        <div class="section-title">
+          <span>История операций</span>
+        </div>
+        <div class="list" id="tx-list"></div>
+      `;
+      contentEl.appendChild(balanceCard);
+
+      const txListEl = balanceCard.querySelector("#tx-list");
+      if (!state.transactions.length) {
+        txListEl.innerHTML = `<div class="empty">операций пока нет</div>`;
+      } else {
+        const sorted = [...state.transactions].sort((a, b) =>
+          a.dateISO < b.dateISO ? 1 : -1
+        );
+        txListEl.innerHTML = sorted
+          .map((tx) => {
+            return `
+            <div class="tx-item" data-tx-id="${tx.id}">
+              <div class="tx-main">
+                <span>${tx.note || "(без описания)"}</span>
+                <span class="tx-amount ${tx.type}">${
+              tx.type === "income" ? "+" : "−"
+            }${tx.amount.toLocaleString("ru-RU")} ₽</span>
+              </div>
+              <div class="tx-meta">
+                <span>${formatDate(tx.dateISO)}</span>
+                <span>
+                  <button class="btn btn-small btn-outline" data-edit-tx="${
+                    tx.id
+                  }">изменить</button>
+                  <button class="btn btn-small btn-outline" data-del-tx="${
+                    tx.id
+                  }">удалить</button>
+                </span>
+              </div>
+              ${tagsToHTML(tx.tags)}
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      // free money (allocation to monthly)
+      const freeCard = document.createElement("section");
+      freeCard.className = "card";
+      freeCard.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Свободные деньги</div>
+            <div class="card-subtitle">распределение на ежемесячные платежи</div>
+          </div>
+        </div>
+        <div class="section-subtitle">
+          ежемесячные цели получают прогресс отсюда, баланс на руках не трогаем автоматически
+        </div>
+        <div class="list" id="free-list"></div>
+      `;
+      contentEl.appendChild(freeCard);
+
+      const freeListEl = freeCard.querySelector("#free-list");
+      if (!state.monthlyPayments.length) {
+        freeListEl.innerHTML =
+          '<div class="empty">пока нет ежемесячных целей</div>';
+      } else {
+        const sorted = [...state.monthlyPayments].sort((a, b) => {
+          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
+          if (b.amount !== a.amount) return b.amount - a.amount;
+          return a.dayOfMonth - b.dayOfMonth;
+        });
+        freeListEl.innerHTML = sorted
+          .map((p) => {
+            const collectPct =
+              p.amount > 0 ? Math.round((p.allocated || 0) / p.amount * 100) : 0;
+            return `
+            <div class="tx-item" data-mp-id="${p.id}">
+              <div class="tx-main">
+                <span>${p.title}</span>
+                <span class="tx-amount expense">${p.amount.toLocaleString(
+                  "ru-RU"
+                )} ₽</span>
+              </div>
+              <div class="tx-meta">
+                <span>${p.dayOfMonth}-го числа</span>
+                <span>${
+                  p.priority
+                    ? '<span class="pill-small">приоритет</span>'
+                    : ""
+                }</span>
+              </div>
+              <div class="chip-row">
+                ${progressCircleHTML(collectPct)}
+                <span class="small-inline">собрано ${(
+                  p.allocated || 0
+                ).toLocaleString("ru-RU")} ₽ · осталось ${(Math.max(
+              0,
+              p.amount - (p.allocated || 0)
+            )).toLocaleString("ru-RU")} ₽</span>
+              </div>
+              <div class="btn-row" style="margin-top:6px;">
+                <button class="btn btn-small btn-ghost" data-alloc="${
+                  p.id
+                }">выделить</button>
+                <button class="btn btn-small btn-outline" data-unalloc="${
+                  p.id
+                }">отменить</button>
+              </div>
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      // monthly payments card (info)
+      const paymentsCard = document.createElement("section");
+      paymentsCard.className = "card";
+      paymentsCard.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Ежемесячные цели</div>
+            <div class="card-subtitle">подписки, квартира, обязательства</div>
+          </div>
+          <button class="btn btn-small btn-outline" id="btn-add-monthly">+ цель</button>
+        </div>
+        <div class="list" id="mp-list"></div>
+      `;
+      contentEl.appendChild(paymentsCard);
+
+      const mpListEl = paymentsCard.querySelector("#mp-list");
+      if (!state.monthlyPayments.length) {
+        mpListEl.innerHTML = `<div class="empty">ежемесячных целей пока нет</div>`;
+      } else {
+        const sorted = [...state.monthlyPayments].sort((a, b) => {
+          if (!!b.priority !== !!a.priority) return b.priority ? 1 : -1;
+          if (b.amount !== a.amount) return b.amount - a.amount;
+          return a.dayOfMonth - b.dayOfMonth;
+        });
+        mpListEl.innerHTML = sorted
+          .map((p) => {
+            const pct =
+              p.amount > 0 ? Math.round((p.allocated || 0) / p.amount * 100) : 0;
+            return `
+            <div class="tx-item">
+              <div class="tx-main">
+                <span>${p.title}</span>
+                <span class="tx-amount expense">${p.amount.toLocaleString(
+                  "ru-RU"
+                )} ₽</span>
+              </div>
+              <div class="tx-meta">
+                <span>оплата ${p.dayOfMonth}-го числа</span>
+              </div>
+              <div class="chip-row">
+                ${progressCircleHTML(pct)}
+                ${
+                  p.priority
+                    ? '<span class="pill-small">приоритет</span>'
+                    : ""
+                }
+                <button class="btn btn-small btn-outline" data-del-mp="${
+                  p.id
+                }">удалить</button>
+              </div>
+              ${p.description ? `<div class="muted">${p.description}</div>` : ""}
+              ${tagsToHTML(p.tags)}
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      // short financial goals
+      const shortCard = document.createElement("section");
+      shortCard.className = "card";
+      shortCard.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Финансовые цели</div>
+            <div class="card-subtitle">краткосрочные накопления по расписанию</div>
+          </div>
+          <button class="btn btn-small btn-outline" id="btn-add-short-goal">+ цель</button>
+        </div>
+        <div class="list" id="short-list"></div>
+      `;
+      contentEl.appendChild(shortCard);
+
+      const shortListEl = shortCard.querySelector("#short-list");
+      if (!state.shortGoals.length) {
+        shortListEl.innerHTML = `<div class="empty">финансовых целей пока нет</div>`;
+      } else {
+        const sorted = [...state.shortGoals].sort((a, b) =>
+          compareISO(a.deadlineISO, b.deadlineISO)
+        );
+        const today = todayISO();
+        shortListEl.innerHTML = sorted
+          .map((g) => {
+            const doneSum = g.schedule
+              .filter((d) => d.status === "done")
+              .reduce((acc, d) => acc + (d.planned || 0), 0);
+            const pct =
+              g.totalAmount > 0
+                ? Math.round((doneSum / g.totalAmount) * 100)
+                : 0;
+            const daysLeft =
+              (new Date(g.deadlineISO) - new Date(today)) /
+              (1000 * 60 * 60 * 24);
+            return `
+            <div class="tx-item" data-sg-id="${g.id}">
+              <div class="tx-main">
+                <span>${g.title}</span>
+                <span class="tx-amount income">${g.totalAmount.toLocaleString(
+                  "ru-RU"
+                )} ₽</span>
+              </div>
+              <div class="tx-meta">
+                <span>дедлайн: ${formatDate(g.deadlineISO)}</span>
+                <span>${
+                  daysLeft >= 0
+                    ? "осталось ~" + Math.ceil(daysLeft) + " дн."
+                    : "дедлайн прошёл"
+                }</span>
+              </div>
+              <div class="chip-row">
+                ${progressCircleHTML(pct)}
+                <span class="small-inline">осталось ${Math.max(
+                  0,
+                  g.totalAmount - doneSum
+                ).toLocaleString("ru-RU")} ₽</span>
+                <button class="btn btn-small btn-outline" data-open-sched="${
+                  g.id
+                }">расписание</button>
+                <button class="btn btn-small btn-outline" data-del-sg="${
+                  g.id
+                }">удалить</button>
+              </div>
+              ${tagsToHTML(g.tags)}
+            </div>
+          `;
+          })
+          .join("");
+      }
+
+      // handlers
+      balanceCard
+        .querySelector("#btn-add-income")
+        .addEventListener("click", () => openIncomeSheet());
+      balanceCard
+        .querySelector("#btn-add-expense")
+        .addEventListener("click", () => openExpenseSheet());
+      balanceCard
+        .querySelector("#btn-set-balance")
+        .addEventListener("click", () => openBalanceSheet());
+
+      txListEl.addEventListener("click", (e) => {
+        const del = e.target.closest("[data-del-tx]");
+        if (del) {
+          const id = del.getAttribute("data-del-tx");
+          const tx = state.transactions.find((t) => t.id === id);
+          if (!tx) return;
+          if (!confirm("Удалить эту операцию?")) return;
+          if (tx.type === "income") state.balance -= tx.amount;
+          else state.balance += tx.amount;
+          state.transactions = state.transactions.filter((t) => t.id !== id);
+          saveState();
+          return;
+        }
+        const edit = e.target.closest("[data-edit-tx]");
+        if (edit) {
+          const id = edit.getAttribute("data-edit-tx");
+          const tx = state.transactions.find((t) => t.id === id);
+          if (!tx) return;
+          openEditTxSheet(tx);
+        }
+      });
+
+      freeListEl.addEventListener("click", (e) => {
+        const allocBtn = e.target.closest("[data-alloc]");
+        const unallocBtn = e.target.closest("[data-unalloc]");
+        if (allocBtn) {
+          const id = allocBtn.getAttribute("data-alloc");
+          const p = state.monthlyPayments.find((x) => x.id === id);
+          if (!p) return;
+          openAllocSheet(p);
+          return;
+        }
+        if (unallocBtn) {
+          const id = unallocBtn.getAttribute("data-unalloc");
+          const p = state.monthlyPayments.find((x) => x.id === id);
+          if (!p) return;
+          if (!confirm("Отменить всё распределение по этой цели?")) return;
+          p.allocated = 0;
+          saveState();
+        }
+      });
+
+      paymentsCard
+        .querySelector("#btn-add-monthly")
+        .addEventListener("click", () => openMonthlySheet());
+      mpListEl.addEventListener("click", (e) => {
+        const del = e.target.closest("[data-del-mp]");
+        if (!del) return;
+        const id = del.getAttribute("data-del-mp");
+        if (!confirm("Удалить эту ежемесячную цель?")) return;
+        state.monthlyPayments = state.monthlyPayments.filter(
+          (p) => p.id !== id
+        );
+        saveState();
+      });
+
+      shortCard
+        .querySelector("#btn-add-short-goal")
+        .addEventListener("click", () => openShortGoalSheet());
+      shortListEl.addEventListener("click", (e) => {
+        const open = e.target.closest("[data-open-sched]");
+        const del = e.target.closest("[data-del-sg]");
+        if (open) {
+          const id = open.getAttribute("data-open-sched");
+          const g = state.shortGoals.find((x) => x.id === id);
+          if (!g) return;
+          openSchedSheet(g);
+        }
+        if (del) {
+          const id = del.getAttribute("data-del-sg");
+          if (!confirm("Удалить эту финансовую цель?")) return;
+          state.shortGoals = state.shortGoals.filter((g) => g.id !== id);
+          saveState();
+        }
+      });
+    }
+
+    // sheets: finance
+
+    function openIncomeSheet() {
+      openSheet(
+        "Добавить доход",
+        `
         <div class="field-group">
           <div class="field-label">Сумма</div>
-          <input type="number" id="tx-amount" class="field-input" inputmode="decimal" />
+          <input type="number" id="inc-amount" class="field-input" inputmode="decimal" />
         </div>
         <div class="field-group">
-          <div class="field-label">Описание</div>
-          <input type="text" id="tx-note" class="field-input" placeholder="зарплата, еда, транспорт..." />
+          <div class="field-label">Описание (опционально)</div>
+          <input type="text" id="inc-note" class="field-input" />
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
-          <input type="text" id="tx-tags" class="field-input" placeholder="через запятую: работа, быт..." />
-          <div class="helper-text">для удобной группировки (например: квартира, еда, психолог)</div>
+          <input type="text" id="inc-tags" class="field-input" placeholder="через запятую" />
         </div>
         <div class="field-group">
           <div class="field-label">Дата</div>
-          <input type="date" id="tx-date" class="field-input" value="${todayISO()}" />
+          <input type="date" id="inc-date" class="field-input" value="${todayISO()}" />
         </div>
-        <button class="btn btn-primary" id="tx-save">сохранить</button>
-      `);
-
-      document.getElementById("tx-amount").focus();
-
-      document.getElementById("tx-save").addEventListener("click", () => {
-        const amountVal = parseFloat(
-          document.getElementById("tx-amount").value.replace(",", ".")
+        <button class="btn btn-primary" id="inc-save">сохранить</button>
+      `
+      );
+      const amountEl = document.getElementById("inc-amount");
+      amountEl.focus();
+      document.getElementById("inc-save").addEventListener("click", () => {
+        const val = parseFloat(amountEl.value.replace(",", "."));
+        if (!val || val <= 0) return;
+        const note = document.getElementById("inc-note").value.trim();
+        const tags = parseTags(
+          document.getElementById("inc-tags").value.trim()
         );
-        if (!amountVal || amountVal <= 0) return;
-        const note = document.getElementById("tx-note").value.trim();
-        const tags = parseTags(document.getElementById("tx-tags").value);
-        const dateISO = document.getElementById("tx-date").value || todayISO();
-
+        const dateISO =
+          document.getElementById("inc-date").value || todayISO();
         const tx = {
           id: uuid(),
-          type,
-          amount: Math.round(amountVal),
+          type: "income",
+          amount: Math.round(val),
           note,
           tags,
           dateISO
         };
-
         state.transactions.push(tx);
-        if (type === "income") {
-          state.balance += tx.amount;
-        } else {
-          state.balance -= tx.amount;
-        }
-
+        state.balance += tx.amount;
         saveState();
         closeSheet();
       });
     }
 
-    // Balance manual set
+    function openExpenseSheet() {
+      const templatesHTML = state.expenseTemplates.length
+        ? `
+        <div class="field-group">
+          <div class="field-label">Шаблоны</div>
+          <div class="chip-row" id="tmpl-row">
+            ${state.expenseTemplates
+              .map(
+                (t) =>
+                  `<button class="chip" data-tmpl-id="${t.id}">${t.title} · ${t.amount.toLocaleString(
+                    "ru-RU"
+                  )} ₽</button>`
+              )
+              .join("")}
+          </div>
+        </div>
+        `
+        : "";
+
+      openSheet(
+        "Добавить расход",
+        `
+        <div class="field-group">
+          <div class="field-label">Сумма</div>
+          <input type="number" id="exp-amount" class="field-input" inputmode="decimal" />
+          <div class="helper-text">только сумма, детали можно добавить позже из истории</div>
+        </div>
+        ${templatesHTML}
+        <button class="btn btn-primary" id="exp-save">сохранить</button>
+      `
+      );
+      const amountEl = document.getElementById("exp-amount");
+      amountEl.focus();
+
+      const tmplRow = document.getElementById("tmpl-row");
+      if (tmplRow) {
+        tmplRow.addEventListener("click", (e) => {
+          const chip = e.target.closest("[data-tmpl-id]");
+          if (!chip) return;
+          const id = chip.getAttribute("data-tmpl-id");
+          const tmpl = state.expenseTemplates.find((t) => t.id === id);
+          if (!tmpl) return;
+          amountEl.value = tmpl.amount;
+        });
+      }
+
+      document.getElementById("exp-save").addEventListener("click", () => {
+        const val = parseFloat(amountEl.value.replace(",", "."));
+        if (!val || val <= 0) return;
+        const tx = {
+          id: uuid(),
+          type: "expense",
+          amount: Math.round(val),
+          note: "",
+          tags: [],
+          dateISO: todayISO()
+        };
+        state.transactions.push(tx);
+        state.balance -= tx.amount;
+        saveState();
+        closeSheet();
+      });
+    }
+
+    function openEditTxSheet(tx) {
+      openSheet(
+        "Редактировать операцию",
+        `
+        <div class="field-group">
+          <div class="field-label">Сумма</div>
+          <input type="number" id="tx-amount" class="field-input" inputmode="decimal" value="${tx.amount}" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Описание</div>
+          <input type="text" id="tx-note" class="field-input" value="${tx.note || ""}" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Теги</div>
+          <input type="text" id="tx-tags" class="field-input" value="${(tx.tags || []).join(
+            ", "
+          )}" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Дата</div>
+          <input type="date" id="tx-date" class="field-input" value="${tx.dateISO}" />
+        </div>
+        <button class="btn btn-primary" id="tx-save">сохранить</button>
+      `
+      );
+      document.getElementById("tx-amount").focus();
+      document.getElementById("tx-save").addEventListener("click", () => {
+        const newAmount = parseFloat(
+          document.getElementById("tx-amount").value.replace(",", ".")
+        );
+        if (!newAmount || newAmount <= 0) return;
+        const prevAmount = tx.amount;
+        if (newAmount !== prevAmount) {
+          const diff = Math.round(newAmount) - prevAmount;
+          if (tx.type === "income") state.balance += diff;
+          else state.balance -= diff;
+          tx.amount = Math.round(newAmount);
+        }
+        tx.note = document.getElementById("tx-note").value.trim();
+        tx.tags = parseTags(
+          document.getElementById("tx-tags").value.trim()
+        );
+        tx.dateISO =
+          document.getElementById("tx-date").value || tx.dateISO;
+        saveState();
+        closeSheet();
+      });
+    }
+
     function openBalanceSheet() {
       openSheet(
         "Настроить баланс",
         `
         <div class="field-group">
           <div class="field-label">Баланс на руках, ₽</div>
-          <input type="number" id="bal-value" class="field-input" inputmode="decimal" value="${state.balance}" />
-          <div class="helper-text">это не создаст транзакцию, просто обновит цифру баланса</div>
+          <input type="number" id="bal-val" class="field-input" inputmode="decimal" value="${state.balance}" />
+          <div class="helper-text">баланс обновится, операции не изменятся</div>
         </div>
         <button class="btn btn-primary" id="bal-save">сохранить</button>
       `
       );
-
-      document.getElementById("bal-value").focus();
-
+      const inp = document.getElementById("bal-val");
+      inp.focus();
       document.getElementById("bal-save").addEventListener("click", () => {
-        const val = parseFloat(
-          document.getElementById("bal-value").value.replace(",", ".")
-        );
+        const val = parseFloat(inp.value.replace(",", "."));
         if (Number.isNaN(val)) return;
         state.balance = Math.round(val);
         saveState();
@@ -2151,28 +1634,27 @@
       });
     }
 
-    // Add monthly payment
     function openMonthlySheet() {
       openSheet(
-        "Добавить ежемесячный платёж",
+        "Новая ежемесячная цель",
         `
         <div class="field-group">
           <div class="field-label">Название</div>
-          <input type="text" id="mp-title" class="field-input" placeholder="квартира, подписка, аделина..." />
+          <input type="text" id="mp-title" class="field-input" />
         </div>
         <div class="field-group field-row">
-          <div style="flex:1">
+          <div style="flex:1;">
             <div class="field-label">Сумма, ₽</div>
             <input type="number" id="mp-amount" class="field-input" inputmode="decimal" />
           </div>
-          <div style="width:40%">
+          <div style="flex:1;">
             <div class="field-label">День месяца</div>
             <input type="number" id="mp-day" class="field-input" min="1" max="31" />
           </div>
         </div>
         <div class="field-group">
-          <div class="field-label">Описание</div>
-          <input type="text" id="mp-desc" class="field-input" placeholder="комментарий (опционально)" />
+          <div class="field-label">Описание (опционально)</div>
+          <input type="text" id="mp-desc" class="field-input" />
         </div>
         <div class="field-group">
           <label class="field-label">
@@ -2182,14 +1664,12 @@
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
-          <input type="text" id="mp-tags" class="field-input" placeholder="жильё, подписки..." />
+          <input type="text" id="mp-tags" class="field-input" placeholder="через запятую" />
         </div>
-        <button class="btn btn-primary" id="mp-save">сохранить</button>
+        <button class="btn btn-primary" id="mp-save">создать</button>
       `
       );
-
       document.getElementById("mp-title").focus();
-
       document.getElementById("mp-save").addEventListener("click", () => {
         const title = document.getElementById("mp-title").value.trim();
         if (!title) return;
@@ -2197,100 +1677,90 @@
           document.getElementById("mp-amount").value.replace(",", ".")
         );
         if (!amountVal || amountVal <= 0) return;
-        const day = parseInt(document.getElementById("mp-day").value, 10);
+        const day = parseInt(
+          document.getElementById("mp-day").value,
+          10
+        );
         if (!day || day < 1 || day > 31) return;
-        const description = document
-          .getElementById("mp-desc")
-          .value.trim();
-        const tags = parseTags(document.getElementById("mp-tags").value);
+        const desc = document.getElementById("mp-desc").value.trim();
         const priority = document.getElementById("mp-priority").checked;
-
+        const tags = parseTags(
+          document.getElementById("mp-tags").value.trim()
+        );
         state.monthlyPayments.push({
           id: uuid(),
           title,
           amount: Math.round(amountVal),
           dayOfMonth: day,
-          description,
+          description: desc,
+          priority,
           tags,
-          priority
+          allocated: 0
         });
-
         saveState();
         closeSheet();
       });
     }
 
-    // Add short financial goal
-    function openShortGoalSheet(prefill = {}) {
+    function openShortGoalSheet() {
       const today = todayISO();
       openSheet(
-        "Краткосрочная финансовая цель",
+        "Новая финансовая цель",
         `
         <div class="field-group">
-          <div class="field-label">Название цели</div>
-          <input type="text" id="sg-title" class="field-input" placeholder="кроссовки, техника, поездка..." value="${
-            prefill.title || ""
-          }" />
+          <div class="field-label">Название</div>
+          <input type="text" id="sg-title" class="field-input" />
         </div>
         <div class="field-group field-row">
-          <div style="flex:1">
+          <div style="flex:1;">
             <div class="field-label">Сумма, ₽</div>
-            <input type="number" id="sg-amount" class="field-input" inputmode="decimal" value="${
-              prefill.amount || ""
-            }" />
+            <input type="number" id="sg-amount" class="field-input" inputmode="decimal" />
           </div>
-          <div style="flex:1">
+          <div style="flex:1;">
             <div class="field-label">Дедлайн</div>
-            <input type="date" id="sg-deadline" class="field-input" min="${today}" value="${
-          prefill.deadlineISO || today
-        }" />
+            <input type="date" id="sg-deadline" class="field-input" min="${today}" value="${today}" />
           </div>
         </div>
         <div class="field-group">
-          <label class="field-label">
-            <input type="checkbox" id="sg-priority" />
-            высокий приоритет
-          </label>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Дни без заработка (календарь)</div>
+          <div class="field-label">Дни без заработка</div>
           <div class="helper-text">отметь даты между сегодня и дедлайном, когда точно не будешь работать</div>
           <div class="chip-row" id="sg-calendar"></div>
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
-          <input type="text" id="sg-tags" class="field-input" placeholder="одежда, техника, отдых..." />
+          <input type="text" id="sg-tags" class="field-input" placeholder="через запятую" />
         </div>
-        <button class="btn btn-primary" id="sg-save">создать цель и расписание</button>
+        <button class="btn btn-primary" id="sg-save">создать</button>
       `
       );
 
+      const calEl = document.getElementById("sg-calendar");
       const deadlineEl = document.getElementById("sg-deadline");
-      const calendarEl = document.getElementById("sg-calendar");
-      const nonWorkingDates = new Set();
+      const nonWorking = new Set();
 
       function rebuildCalendar() {
-        const deadlineISO = deadlineEl.value || today;
-        calendarEl.innerHTML = "";
+        const deadline = deadlineEl.value || today;
+        calEl.innerHTML = "";
         let cursor = today;
-        while (compareDateISO(cursor, deadlineISO) <= 0) {
+        while (compareISO(cursor, deadline) <= 0) {
+          const dLabel = formatDate(cursor);
+          const w = weekdayShort(cursor);
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className =
-            "chip calendar-chip" +
-            (nonWorkingDates.has(cursor) ? " selected" : "");
-          btn.textContent = formatDate(cursor);
+            "calendar-chip" + (nonWorking.has(cursor) ? " selected" : "");
+          btn.textContent = `${dLabel} (${w})`;
           btn.dataset.date = cursor;
           btn.addEventListener("click", () => {
-            if (nonWorkingDates.has(cursor)) {
-              nonWorkingDates.delete(cursor);
+            if (nonWorking.has(cursor)) {
+              nonWorking.delete(cursor);
               btn.classList.remove("selected");
             } else {
-              nonWorkingDates.add(cursor);
+              nonWorking.add(cursor);
               btn.classList.add("selected");
             }
           });
-          calendarEl.appendChild(btn);
+          calEl.appendChild(btn);
           cursor = addDaysISO(cursor, 1);
         }
       }
@@ -2307,167 +1777,521 @@
           document.getElementById("sg-amount").value.replace(",", ".")
         );
         if (!amountVal || amountVal <= 0) return;
-        const deadlineISO =
-          document.getElementById("sg-deadline").value || today;
-        const tags = parseTags(document.getElementById("sg-tags").value);
-        const nonWorkingDatesArr = Array.from(nonWorkingDates);
-        const priority = document.getElementById("sg-priority").checked;
-
-        const createdISO = today;
-        const schedule = generateSchedule(
-          createdISO,
-          deadlineISO,
-          Math.round(amountVal),
-          nonWorkingDatesArr
+        const deadline = deadlineEl.value || today;
+        const tags = parseTags(
+          document.getElementById("sg-tags").value.trim()
         );
-
-        const goal = {
-          id: uuid(),
+        const nonWorkingArr = Array.from(nonWorking);
+        const goal = createScheduleForShortGoal(
           title,
-          amount: Math.round(amountVal),
-          totalAmount: Math.round(amountVal),
-          remaining: Math.round(amountVal),
-          deadlineISO,
-          createdISO,
-          nonWorkingDates: nonWorkingDatesArr,
-          schedule,
-          tags,
-          priority
-        };
-
+          Math.round(amountVal),
+          today,
+          deadline,
+          nonWorkingArr,
+          tags
+        );
         state.shortGoals.push(goal);
         saveState();
         closeSheet();
       });
     }
 
-    // Schedule sheet for short goal
-    function openShortGoalScheduleSheet(goal) {
-      const pendingCount = goal.schedule.filter(
-        (d) => d.status === "pending"
-      ).length;
+    function createScheduleForShortGoal(
+      title,
+      totalAmount,
+      createdISO,
+      deadlineISO,
+      nonWorkingDates,
+      tags,
+      existingSchedule
+    ) {
+      const skipSet = new Set(nonWorkingDates || []);
+      const dates = [];
+      let cursor = createdISO;
+      while (compareISO(cursor, deadlineISO) <= 0) {
+        if (!skipSet.has(cursor)) dates.push(cursor);
+        cursor = addDaysISO(cursor, 1);
+      }
+      const workDays = dates.length || 1;
+      const perDay = Math.floor(totalAmount / workDays);
+      let remainder = totalAmount - perDay * workDays;
+
+      const schedule = dates.map((date, idx) => {
+        const extra = remainder > 0 ? 1 : 0;
+        if (remainder > 0) remainder -= 1;
+        const planned = perDay + extra;
+        let prevStatus = "pending";
+        if (existingSchedule) {
+          const prev = existingSchedule.find((d) => d.dateISO === date);
+          if (prev) prevStatus = prev.status || "pending";
+        }
+        return {
+          dateISO: date,
+          planned,
+          status: prevStatus
+        };
+      });
+
+      return {
+        id: uuid(),
+        title,
+        totalAmount,
+        remaining: totalAmount,
+        createdISO,
+        deadlineISO,
+        schedule,
+        tags: tags || []
+      };
+    }
+
+    function recalcRemainingForShortGoal(g) {
+      let doneSum = 0;
+      for (const d of g.schedule) {
+        if (d.status === "done") doneSum += d.planned || 0;
+      }
+      g.remaining = Math.max(0, g.totalAmount - doneSum);
+    }
+
+    function redistributeAfterSkip(g) {
+      recalcRemainingForShortGoal(g);
+      const pending = g.schedule.filter((d) => d.status === "pending");
+      if (!pending.length) return;
+      const remainingAmount = g.remaining;
+      const perDay = Math.floor(remainingAmount / pending.length);
+      let remainder = remainingAmount - perDay * pending.length;
+      for (const d of g.schedule) {
+        if (d.status === "pending") {
+          const extra = remainder > 0 ? 1 : 0;
+          if (remainder > 0) remainder -= 1;
+          d.planned = perDay + extra;
+        }
+      }
+    }
+
+    function openSchedSheet(g) {
+      recalcRemainingForShortGoal(g);
       openSheet(
-        `Цель: ${goal.title}`,
+        g.title,
         `
         <div class="field-group">
           <div class="field-label">Остаток</div>
-          <div class="balance-value" style="font-size:18px;">${goal.remaining.toLocaleString(
+          <div class="balance-value" id="sg-rem">${g.remaining.toLocaleString(
             "ru-RU"
           )} ₽</div>
           <div class="helper-text">дедлайн: ${formatDate(
-            goal.deadlineISO
-          )}, рабочих дней впереди: ${pendingCount}</div>
+            g.deadlineISO
+          )}</div>
+        </div>
+        <div class="field-group field-row">
+          <button class="btn btn-small btn-outline" id="sg-edit-deadline">изменить дедлайн</button>
+          <button class="btn btn-small btn-outline" id="sg-edit-amount">изменить сумму</button>
         </div>
         <div class="section-title">
-          <span>Расписание по дням</span>
+          <span>Расписание</span>
         </div>
         <div class="schedule-list" id="sched-list"></div>
       `
       );
 
       const listEl = document.getElementById("sched-list");
-
-      function updateHeader() {
-        sheetBodyEl
-          .querySelector(".balance-value")
-          .innerHTML = `${goal.remaining.toLocaleString("ru-RU")} ₽`;
-      }
-
-      function renderScheduleListLocal() {
-        const sorted = [...goal.schedule].sort((a, b) =>
-          compareDateISO(a.dateISO, b.dateISO)
+      function renderList() {
+        const sorted = [...g.schedule].sort((a, b) =>
+          compareISO(a.dateISO, b.dateISO)
         );
         listEl.innerHTML = sorted
           .map((d) => {
-            const statusLabel =
+            const label =
               d.status === "done"
                 ? "выполнено"
                 : d.status === "skipped"
                 ? "пропущено"
                 : "ожидание";
             return `
-          <div class="schedule-item">
-            <div class="sched-left">
-              <span class="sched-date">${formatDate(d.dateISO)}</span>
-              <span class="sched-plan">план: ${d.planned.toLocaleString(
-                "ru-RU"
-              )} ₽</span>
-              <span class="sched-status ${d.status}">${statusLabel}</span>
+            <div class="schedule-item">
+              <div class="sched-left">
+                <span class="sched-date">${formatDate(
+                  d.dateISO
+                )} (${weekdayShort(d.dateISO)})</span>
+                <span class="sched-plan">план: ${d.planned.toLocaleString(
+                  "ru-RU"
+                )} ₽</span>
+                <span class="sched-status ${d.status}">${label}</span>
+              </div>
+              <div class="sched-btn-row">
+                <button class="sched-btn sched-btn-primary" data-act="done" data-date="${
+                  d.dateISO
+                }">сделал</button>
+                <button class="sched-btn" data-act="skip" data-date="${
+                  d.dateISO
+                }">пропустить</button>
+                <button class="sched-btn" data-act="reset" data-date="${
+                  d.dateISO
+                }">сбросить</button>
+              </div>
             </div>
-            <div class="sched-btn-row">
-              <button class="sched-btn sched-btn-primary" data-action="done" data-date="${
-                d.dateISO
-              }">сделал</button>
-              <button class="sched-btn" data-action="skip" data-date="${
-                d.dateISO
-              }">пропустить</button>
-              <button class="sched-btn" data-action="reset" data-date="${
-                d.dateISO
-              }">сбросить</button>
-            </div>
-          </div>
-        `;
+          `;
           })
           .join("");
       }
 
-      function updateEntryStatus(entry, newStatus) {
-        const prev = entry.status || "pending";
-        if (prev === newStatus) return;
-
-        // откат влияния старого статуса
-        if (prev === "done") {
-          goal.remaining += entry.planned;
-        }
-        // skipped не трогает remaining
-
-        // применение нового
-        if (newStatus === "done") {
-          goal.remaining = Math.max(0, goal.remaining - entry.planned);
-        }
-
-        entry.status = newStatus;
+      function updateHeader() {
+        recalcRemainingForShortGoal(g);
+        document.getElementById("sg-rem").textContent =
+          g.remaining.toLocaleString("ru-RU") + " ₽";
       }
 
-      renderScheduleListLocal();
+      renderList();
+      updateHeader();
 
       listEl.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-action]");
+        const btn = e.target.closest("[data-act]");
         if (!btn) return;
-        const action = btn.getAttribute("data-action");
-        const dateISO = btn.getAttribute("data-date");
-        if (!dateISO) return;
-
-        const entry = goal.schedule.find((d) => d.dateISO === dateISO);
-        if (!entry) return;
-
-        if (action === "done") {
-          updateEntryStatus(entry, "done");
-        } else if (action === "skip") {
-          updateEntryStatus(entry, "skipped");
-        } else if (action === "reset") {
-          updateEntryStatus(entry, "pending");
+        const act = btn.getAttribute("data-act");
+        const date = btn.getAttribute("data-date");
+        const item = g.schedule.find((d) => d.dateISO === date);
+        if (!item) return;
+        const prev = item.status || "pending";
+        if (act === "done") {
+          item.status = "done";
+        } else if (act === "skip") {
+          item.status = "skipped";
+        } else if (act === "reset") {
+          item.status = "pending";
         }
-
+        // перераспределение только на skip / reset
+        redistributeAfterSkip(g);
         saveState();
-        renderScheduleListLocal();
+        renderList();
         updateHeader();
+      });
+
+      document
+        .getElementById("sg-edit-deadline")
+        .addEventListener("click", () => {
+          const newDate = prompt(
+            "Новый дедлайн (ГГГГ-ММ-ДД)",
+            g.deadlineISO
+          );
+          if (!newDate) return;
+          const d = new Date(newDate);
+          if (Number.isNaN(d.getTime())) return;
+          const updated = createScheduleForShortGoal(
+            g.title,
+            g.totalAmount,
+            g.createdISO,
+            newDate,
+            [],
+            g.tags,
+            g.schedule
+          );
+          g.deadlineISO = updated.deadlineISO;
+          g.schedule = updated.schedule;
+          recalcRemainingForShortGoal(g);
+          saveState();
+          renderList();
+          updateHeader();
+        });
+
+      document
+        .getElementById("sg-edit-amount")
+        .addEventListener("click", () => {
+          const valStr = prompt(
+            "Новая сумма цели, ₽",
+            g.totalAmount
+          );
+          if (!valStr) return;
+          const val = parseFloat(valStr.replace(",", "."));
+          if (!val || val <= 0) return;
+          g.totalAmount = Math.round(val);
+          const updated = createScheduleForShortGoal(
+            g.title,
+            g.totalAmount,
+            g.createdISO,
+            g.deadlineISO,
+            [],
+            g.tags,
+            g.schedule
+          );
+          g.schedule = updated.schedule;
+          recalcRemainingForShortGoal(g);
+          saveState();
+          renderList();
+          updateHeader();
+        });
+    }
+
+    function openAllocSheet(p) {
+      openSheet(
+        "Распределить на " + p.title,
+        `
+        <div class="field-group">
+          <div class="field-label">Сумма, ₽</div>
+          <input type="number" id="al-amount" class="field-input" inputmode="decimal" />
+          <div class="helper-text">баланс на руках не меняется автоматически, ты просто фиксируешь, сколько выделил на эту цель</div>
+        </div>
+        <button class="btn btn-primary" id="al-save">сохранить</button>
+      `
+      );
+      const inp = document.getElementById("al-amount");
+      inp.focus();
+      document.getElementById("al-save").addEventListener("click", () => {
+        const val = parseFloat(inp.value.replace(",", "."));
+        if (!val || val <= 0) return;
+        p.allocated = (p.allocated || 0) + Math.round(val);
+        saveState();
+        closeSheet();
       });
     }
 
-    // Add goal (tasks)
+    // ===== GOALS TAB =====
+
+    function renderGoals() {
+      contentEl.innerHTML = "";
+
+      const card = document.createElement("section");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Цели</div>
+            <div class="card-subtitle">дневные, недельные, месячные и без срока</div>
+          </div>
+          <button class="btn btn-small btn-outline" id="btn-add-goal">+ цель</button>
+        </div>
+        <div id="goals-body"></div>
+      `;
+      contentEl.appendChild(card);
+
+      const body = card.querySelector("#goals-body");
+
+      const types = ["day", "week", "month", "none"];
+      const typeLabels = {
+        day: "Дневные цели",
+        week: "Недельные цели",
+        month: "Месячные цели",
+        none: "Цели без срока"
+      };
+
+      const goalsByType = {
+        day: [],
+        week: [],
+        month: [],
+        none: []
+      };
+      for (const g of state.goals) {
+        goalsByType[g.type || "none"].push(g);
+      }
+
+      types.forEach((type) => {
+        const list = goalsByType[type];
+        if (!list.length) return;
+        const group = document.createElement("div");
+        group.className = "goals-group";
+        group.innerHTML = `
+          <div class="section-title">
+            <span>${typeLabels[type]}</span>
+          </div>
+        `;
+        const container = document.createElement("div");
+        list
+          .slice()
+          .sort((a, b) =>
+            (a.deadlineISO || "") < (b.deadlineISO || "") ? -1 : 1
+          )
+          .forEach((g) => {
+            const subs = g.subtasks || [];
+            const doneSubs = subs.filter((s) => s.done).length;
+            const pct =
+              subs.length > 0
+                ? Math.round((doneSubs / subs.length) * 100)
+                : g.done
+                ? 100
+                : 0;
+            const box = document.createElement("div");
+            box.className = "goal-box" + (g.done ? " done" : "");
+            box.innerHTML = `
+              <div class="goal-box-header">
+                <div class="goal-main">
+                  ${progressCircleHTML(pct)}
+                  <div>
+                    <div class="goal-title-text">${g.title}</div>
+                    <div class="small-inline">
+                      ${
+                        g.deadlineISO
+                          ? `до ${formatDate(g.deadlineISO)}`
+                          : "без срока"
+                      }
+                    </div>
+                  </div>
+                </div>
+                <div class="goal-actions">
+                  <span class="goal-type-pill" data-type="${g.type}">
+                    ${
+                      g.type === "day"
+                        ? "день"
+                        : g.type === "week"
+                        ? "неделя"
+                        : g.type === "month"
+                        ? "месяц"
+                        : "без срока"
+                    }
+                  </span>
+                  <button class="btn btn-small btn-outline" data-edit-goal="${
+                    g.id
+                  }">изменить</button>
+                  <button class="btn btn-small btn-outline" data-done-goal="${
+                    g.id
+                  }">${g.done ? "снять" : "готово"}</button>
+                  <button class="btn btn-small btn-outline" data-archive-goal="${
+                    g.id
+                  }">в историю</button>
+                </div>
+              </div>
+              ${
+                g.description
+                  ? `<div class="muted" style="margin-top:4px;">${g.description}</div>`
+                  : ""
+              }
+              ${
+                subs.length
+                  ? `
+                    <ul class="subtask-list">
+                      ${subs
+                        .map(
+                          (s) => `
+                          <li class="subtask-item">
+                            <label>
+                              <input type="checkbox" class="subtask-toggle" data-goal-id="${
+                                g.id
+                              }" data-sub-id="${s.id}" ${
+                            s.done ? "checked" : ""
+                          } />
+                              <span>${s.title}</span>
+                            </label>
+                          </li>
+                        `
+                        )
+                        .join("")}
+                    </ul>
+                  `
+                  : ""
+              }
+              ${tagsToHTML(g.tags)}
+            `;
+            container.appendChild(box);
+          });
+        group.appendChild(container);
+        body.appendChild(group);
+      });
+
+      const history = state.goalHistory || [];
+      if (history.length) {
+        const histCard = document.createElement("div");
+        histCard.className = "goals-group";
+        histCard.innerHTML = `
+          <div class="section-title">
+            <span>История</span>
+          </div>
+          <div class="list">
+            ${history
+              .slice()
+              .sort((a, b) =>
+                (a.archivedAt || "") < (b.archivedAt || "") ? 1 : -1
+              )
+              .map(
+                (g) => `
+              <div class="tx-item">
+                <div class="tx-main">
+                  <span>${g.title}</span>
+                  <span class="goal-type-pill" data-type="${g.type}">
+                    ${
+                      g.type === "day"
+                        ? "день"
+                        : g.type === "week"
+                        ? "неделя"
+                        : g.type === "month"
+                        ? "месяц"
+                        : "без срока"
+                    }
+                  </span>
+                </div>
+                <div class="tx-meta">
+                  <span>архив: ${formatDate(g.archivedAt)}</span>
+                  <span>${g.deadlineISO ? "до " + formatDate(g.deadlineISO) : ""}</span>
+                </div>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        `;
+        body.appendChild(histCard);
+      }
+
+      card
+        .querySelector("#btn-add-goal")
+        .addEventListener("click", () => openGoalSheet());
+
+      body.addEventListener("change", (e) => {
+        const subToggle = e.target.closest(".subtask-toggle");
+        if (subToggle) {
+          const goalId = subToggle.getAttribute("data-goal-id");
+          const subId = subToggle.getAttribute("data-sub-id");
+          const g = state.goals.find((x) => x.id === goalId);
+          if (!g) return;
+          const s = (g.subtasks || []).find((x) => x.id === subId);
+          if (!s) return;
+          s.done = subToggle.checked;
+          const subs = g.subtasks || [];
+          if (subs.length && subs.every((x) => x.done)) {
+            g.done = true;
+          }
+          saveState();
+        }
+      });
+
+      body.addEventListener("click", (e) => {
+        const editBtn = e.target.closest("[data-edit-goal]");
+        const doneBtn = e.target.closest("[data-done-goal]");
+        const archBtn = e.target.closest("[data-archive-goal]");
+        if (editBtn) {
+          const id = editBtn.getAttribute("data-edit-goal");
+          const g = state.goals.find((x) => x.id === id);
+          if (!g) return;
+          openGoalEditSheet(g);
+        }
+        if (doneBtn) {
+          const id = doneBtn.getAttribute("data-done-goal");
+          const g = state.goals.find((x) => x.id === id);
+          if (!g) return;
+          g.done = !g.done;
+          saveState();
+        }
+        if (archBtn) {
+          const id = archBtn.getAttribute("data-archive-goal");
+          const idx = state.goals.findIndex((x) => x.id === id);
+          if (idx === -1) return;
+          const g = state.goals[idx];
+          g.archivedAt = todayISO();
+          state.goalHistory.push(g);
+          state.goals.splice(idx, 1);
+          saveState();
+        }
+      });
+    }
+
     function openGoalSheet() {
       const today = todayISO();
       openSheet(
-        "Новая цель/задача",
+        "Новая цель",
         `
         <div class="field-group">
           <div class="field-label">Название</div>
-          <input type="text" id="g-title" class="field-input" placeholder="что именно хочешь сделать" />
+          <input type="text" id="g-title" class="field-input" />
         </div>
         <div class="field-group">
           <div class="field-label">Описание</div>
-          <textarea id="g-desc" class="field-textarea" placeholder="детали, если нужно"></textarea>
+          <textarea id="g-desc" class="field-textarea"></textarea>
         </div>
         <div class="field-group">
           <div class="field-label">Тип</div>
@@ -2484,233 +2308,625 @@
         </div>
         <div class="field-group">
           <div class="field-label">Теги</div>
-          <input type="text" id="g-tags" class="field-input" placeholder="спорт, работа, развитие..." />
+          <input type="text" id="g-tags" class="field-input" placeholder="через запятую" />
         </div>
         <div class="field-group">
-          <label class="field-label">
-            <input type="checkbox" id="g-has-fin" />
-            есть финансовый расход
-          </label>
-          <div class="helper-text">если включишь, создастся ещё и финансовая цель в разделе "Финансы"</div>
-        </div>
-        <div id="g-fin-block" style="display:none;">
-          <div class="field-group field-row">
-            <div style="flex:1">
-              <div class="field-label">Сумма, ₽</div>
-              <input type="number" id="g-fin-amount" class="field-input" inputmode="decimal" />
-            </div>
-            <div style="flex:1">
-              <div class="field-label">Дедлайн (финансовый)</div>
-              <input type="date" id="g-fin-deadline" class="field-input" min="${today}" />
-            </div>
-          </div>
-          <div class="field-group">
-            <label class="field-label">
-              <input type="checkbox" id="g-fin-priority" />
-              высокий приоритет фин. цели
-            </label>
-          </div>
-        </div>
-        <div class="field-group">
-          <div class="field-label">Микроцели (опционально)</div>
-          <div id="subtasks-container"></div>
-          <button class="btn btn-small btn-outline" type="button" id="add-subtask">+ микроцель</button>
-          <div class="helper-text">можно разбить цель на несколько маленьких шагов</div>
+          <div class="field-label">Микроцели</div>
+          <div id="sub-list"></div>
+          <button class="btn btn-small btn-outline" type="button" id="btn-add-sub">+ микроцель</button>
         </div>
         <button class="btn btn-primary" id="g-save">создать</button>
       `
       );
-
-      const hasFinEl = document.getElementById("g-has-fin");
-      const finBlockEl = document.getElementById("g-fin-block");
-      hasFinEl.addEventListener("change", () => {
-        finBlockEl.style.display = hasFinEl.checked ? "block" : "none";
-      });
-
-      const subtasksContainer = document.getElementById("subtasks-container");
-      const addSubBtn = document.getElementById("add-subtask");
-
-      function addSubtaskRow(value = "") {
+      const subList = document.getElementById("sub-list");
+      function addSubRow(value) {
         const row = document.createElement("div");
-        row.className = "field-row subtask-row";
+        row.className = "field-row";
         row.innerHTML = `
-          <input type="text" class="field-input subtask-title" placeholder="например: записаться, собрать документы..." value="${value}" />
+          <input type="text" class="field-input sub-title" value="${value || ""}" placeholder="шаг" />
         `;
-        subtasksContainer.appendChild(row);
+        subList.appendChild(row);
       }
-
-      addSubBtn.addEventListener("click", () => addSubtaskRow());
-
+      document
+        .getElementById("btn-add-sub")
+        .addEventListener("click", () => addSubRow(""));
       document.getElementById("g-title").focus();
 
       document.getElementById("g-save").addEventListener("click", () => {
         const title = document.getElementById("g-title").value.trim();
         if (!title) return;
-        const description = document
-          .getElementById("g-desc")
-          .value.trim();
+        const desc = document.getElementById("g-desc").value.trim();
         const type = document.getElementById("g-type").value;
-        const deadlineISO =
+        const deadline =
           document.getElementById("g-deadline").value || null;
-        const tags = parseTags(document.getElementById("g-tags").value);
-        const hasFin = hasFinEl.checked;
-
-        const subInputs = subtasksContainer.querySelectorAll(".subtask-title");
-        const subtasks = Array.from(subInputs)
-          .map((inp) => inp.value.trim())
+        const tags = parseTags(
+          document.getElementById("g-tags").value.trim()
+        );
+        const subsInp = subList.querySelectorAll(".sub-title");
+        const subs = Array.from(subsInp)
+          .map((i) => i.value.trim())
           .filter(Boolean)
-          .map((t) => ({
-            id: uuid(),
-            title: t,
-            done: false
-          }));
-
-        let linkedShortGoalId = null;
-
-        if (hasFin) {
-          const finAmountVal = parseFloat(
-            document
-              .getElementById("g-fin-amount")
-              .value.replace(",", ".")
-          );
-          const finDeadline =
-            document.getElementById("g-fin-deadline").value || deadlineISO;
-          const finPriority = document.getElementById("g-fin-priority").checked;
-          if (!finAmountVal || finAmountVal <= 0 || !finDeadline) {
-            return;
-          }
-
-          const createdISO = today;
-          const nonWorkingDates = [];
-          const schedule = generateSchedule(
-            createdISO,
-            finDeadline,
-            Math.round(finAmountVal),
-            nonWorkingDates
-          );
-
-          const sg = {
-            id: uuid(),
-            title: title + " (фин.)",
-            amount: Math.round(finAmountVal),
-            totalAmount: Math.round(finAmountVal),
-            remaining: Math.round(finAmountVal),
-            deadlineISO: finDeadline,
-            createdISO,
-            nonWorkingDates,
-            schedule,
-            tags,
-            priority: finPriority
-          };
-          state.shortGoals.push(sg);
-          linkedShortGoalId = sg.id;
-        }
-
+          .map((t) => ({ id: uuid(), title: t, done: false }));
         const goal = {
           id: uuid(),
           title,
-          description,
+          description: desc,
           type,
           createdISO: today,
-          deadlineISO,
+          deadlineISO: deadline,
           tags,
-          linkedShortGoalId,
-          subtasks,
+          subtasks: subs,
           done: false
         };
-
         state.goals.push(goal);
         saveState();
         closeSheet();
       });
     }
 
-    // ====== BACKUP SHEET (EXPORT / IMPORT) ======
-
-    function openBackupSheet() {
-      const json = JSON.stringify(state, null, 2);
+    function openGoalEditSheet(g) {
+      const today = todayISO();
       openSheet(
-        "Экспорт / импорт данных",
+        "Изменить цель",
         `
         <div class="field-group">
-          <div class="field-label">Экспорт (копия текущего состояния)</div>
-          <textarea id="backup-export" class="mono" readonly>${json}</textarea>
-          <div class="helper-text">можешь скопировать это в заметки / файл, чтобы потом восстановить</div>
-          <button class="btn btn-primary" id="backup-copy">скопировать</button>
+          <div class="field-label">Название</div>
+          <input type="text" id="g-title" class="field-input" value="${g.title}" />
         </div>
         <div class="field-group">
-          <div class="field-label">Импорт</div>
-          <textarea id="backup-import" class="mono" placeholder="вставь сюда ранее сохранённый JSON и нажми &quot;импортировать&quot;"></textarea>
-          <div class="helper-text">внимание: при импорте текущее состояние будет заменено на загруженное</div>
+          <div class="field-label">Описание</div>
+          <textarea id="g-desc" class="field-textarea">${g.description || ""}</textarea>
         </div>
-        <button class="btn btn-ghost" id="backup-apply">импортировать</button>
+        <div class="field-group">
+          <div class="field-label">Тип</div>
+          <select id="g-type" class="field-select">
+            <option value="day">на день</option>
+            <option value="week">на неделю</option>
+            <option value="month">на месяц</option>
+            <option value="none">без срока</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Дедлайн (опционально)</div>
+          <input type="date" id="g-deadline" class="field-input" min="${today}" value="${g.deadlineISO || ""}" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Теги</div>
+          <input type="text" id="g-tags" class="field-input" value="${(g.tags || []).join(
+            ", "
+          )}" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Микроцели</div>
+          <div id="sub-list"></div>
+          <button class="btn btn-small btn-outline" type="button" id="btn-add-sub">+ микроцель</button>
+        </div>
+        <button class="btn btn-primary" id="g-save">сохранить</button>
       `
       );
+      const typeEl = document.getElementById("g-type");
+      typeEl.value = g.type || "none";
+      const subList = document.getElementById("sub-list");
+      (g.subtasks || []).forEach((s) => addSubRowEdit(subList, s.title, s.id));
 
-      const exportEl = document.getElementById("backup-export");
-      const importEl = document.getElementById("backup-import");
-      const copyBtn = document.getElementById("backup-copy");
-      const applyBtn = document.getElementById("backup-apply");
+      function addSubRowEdit(parent, value, id) {
+        const row = document.createElement("div");
+        row.className = "field-row";
+        row.dataset.subId = id || uuid();
+        row.innerHTML = `
+          <input type="text" class="field-input sub-title" value="${value || ""}" />
+        `;
+        parent.appendChild(row);
+      }
 
-      copyBtn.addEventListener("click", async () => {
-        try {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            await navigator.clipboard.writeText(exportEl.value);
-          } else {
-            exportEl.focus();
-            exportEl.select();
-          }
-        } catch (e) {
-          console.error("clipboard error", e);
-        }
-      });
+      document
+        .getElementById("btn-add-sub")
+        .addEventListener("click", () =>
+          addSubRowEdit(subList, "", uuid())
+        );
 
-      applyBtn.addEventListener("click", () => {
-        const raw = importEl.value.trim();
-        if (!raw) return;
-        let parsed;
-        try {
-          parsed = JSON.parse(raw);
-        } catch (e) {
-          alert("Некорректный JSON, проверь данные.");
-          return;
-        }
-        if (!parsed || typeof parsed !== "object") {
-          alert("Структура данных некорректна.");
-          return;
-        }
-        if (!confirm("Текущее состояние будет перезаписано. Продолжить?")) {
-          return;
-        }
-        state = { ...structuredClone(defaultState), ...parsed };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-        state = loadState();
-        render();
+      document.getElementById("g-title").focus();
+
+      document.getElementById("g-save").addEventListener("click", () => {
+        const title = document.getElementById("g-title").value.trim();
+        if (!title) return;
+        g.title = title;
+        g.description = document.getElementById("g-desc").value.trim();
+        g.type = typeEl.value;
+        g.deadlineISO =
+          document.getElementById("g-deadline").value || null;
+        g.tags = parseTags(
+          document.getElementById("g-tags").value.trim()
+        );
+        const rows = subList.querySelectorAll(".field-row");
+        const subs = [];
+        rows.forEach((row) => {
+          const val = row.querySelector(".sub-title").value.trim();
+          const id = row.dataset.subId || uuid();
+          if (!val) return;
+          const existing = (g.subtasks || []).find((s) => s.id === id);
+          subs.push({
+            id,
+            title: val,
+            done: existing ? existing.done : false
+          });
+        });
+        g.subtasks = subs;
+        if (subs.length && subs.every((s) => s.done)) g.done = true;
+        saveState();
         closeSheet();
       });
     }
 
-    // ====== NAV TABS INIT & HEADER BTN ======
+    // ===== ANALYTICS TAB =====
 
-    document.querySelectorAll(".nav-tab").forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const t = tab.getAttribute("data-tab");
-        if (t === activeTab) return;
-        activeTab = t;
-        document
-          .querySelectorAll(".nav-tab")
-          .forEach((node) => node.classList.remove("active"));
-        tab.classList.add("active");
-        render();
+    function renderAnalytics() {
+      contentEl.innerHTML = "";
+
+      const card = document.createElement("section");
+      card.className = "card";
+      card.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Аналитика</div>
+            <div class="card-subtitle">краткий визуальный срез</div>
+          </div>
+          <div class="btn-row" style="margin:0;gap:4px;">
+            <button class="btn btn-small ${
+              analyticsMode === "finance" ? "btn-primary" : "btn-outline"
+            }" data-a-mode="finance">финансы</button>
+            <button class="btn btn-small ${
+              analyticsMode === "goals" ? "btn-primary" : "btn-outline"
+            }" data-a-mode="goals">цели</button>
+          </div>
+        </div>
+        <div id="analytics-body"></div>
+      `;
+      contentEl.appendChild(card);
+
+      const body = card.querySelector("#analytics-body");
+      if (analyticsMode === "finance") {
+        renderFinanceAnalytics(body);
+      } else {
+        renderGoalsAnalytics(body);
+      }
+
+      card.querySelectorAll("[data-a-mode]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const m = btn.getAttribute("data-a-mode");
+          if (m === analyticsMode) return;
+          analyticsMode = m;
+          renderAnalytics();
+        });
       });
-    });
-
-    const backupBtn = document.getElementById("btn-backup");
-    if (backupBtn) {
-      backupBtn.addEventListener("click", () => openBackupSheet());
     }
 
-    // ====== INITIAL RENDER ======
+    function renderFinanceAnalytics(container) {
+      const today = todayISO();
+      const [y, m] = today.split("-");
+      const monthPrefix = `${y}-${m}`;
+      const txMonth = state.transactions.filter((t) =>
+        t.dateISO && t.dateISO.startsWith(monthPrefix)
+      );
+      let income = 0;
+      let expense = 0;
+      const daysMap = {};
+      for (const tx of txMonth) {
+        if (!daysMap[tx.dateISO]) {
+          daysMap[tx.dateISO] = { income: 0, expense: 0 };
+        }
+        if (tx.type === "income") {
+          income += tx.amount;
+          daysMap[tx.dateISO].income += tx.amount;
+        } else {
+          expense += tx.amount;
+          daysMap[tx.dateISO].expense += tx.amount;
+        }
+      }
+      const net = income - expense;
+      const last7 = [];
+      for (let i = 6; i >= 0; i--) {
+        const d = addDaysISO(today, -i);
+        const row = daysMap[d] || { income: 0, expense: 0 };
+        last7.push({ dateISO: d, ...row });
+      }
+
+      container.innerHTML = `
+        <div class="section-title">
+          <span>Месяц</span>
+        </div>
+        <div class="analytics-grid">
+          <div class="analytics-item">
+            <div class="analytics-label">доход</div>
+            <div class="analytics-value">+${income.toLocaleString(
+              "ru-RU"
+            )} ₽</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">расход</div>
+            <div class="analytics-value">−${expense.toLocaleString(
+              "ru-RU"
+            )} ₽</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">итог</div>
+            <div class="analytics-value">${net >= 0 ? "+" : "−"}${Math.abs(
+        net
+      ).toLocaleString("ru-RU")} ₽</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">операций в месяце</div>
+            <div class="analytics-value">${txMonth.length}</div>
+          </div>
+        </div>
+        <div class="section-title" style="margin-top:8px;">
+          <span>Последние 7 дней</span>
+        </div>
+        ${last7
+          .map((d) => {
+            const netDay = d.income - d.expense;
+            const total = d.income + d.expense || 1;
+            const shareIncome = (d.income / total) * 100;
+            return `
+            <div class="day-row">
+              <div class="day-main">
+                <span>${formatDate(d.dateISO)}</span>
+                <span>${netDay === 0 ? "0 ₽" : (netDay > 0 ? "+" : "−") + Math.abs(
+              netDay
+            ).toLocaleString("ru-RU")} ₽</span>
+              </div>
+              <div class="day-bar">
+                <div class="day-bar-fill" style="width:${shareIncome}%;"></div>
+              </div>
+            </div>
+          `;
+          })
+          .join("")}
+      `;
+    }
+
+    function renderGoalsAnalytics(container) {
+      const goals = state.goals;
+      const total = goals.length;
+      const done = goals.filter((g) => g.done).length;
+      const dayGoals = goals.filter((g) => g.type === "day");
+      const weekGoals = goals.filter((g) => g.type === "week");
+      const monthGoals = goals.filter((g) => g.type === "month");
+      const noneGoals = goals.filter((g) => g.type === "none");
+
+      container.innerHTML = `
+        <div class="section-title">
+          <span>Общий прогресс</span>
+        </div>
+        <div class="analytics-grid">
+          <div class="analytics-item">
+            <div class="analytics-label">всего целей</div>
+            <div class="analytics-value">${total}</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">выполнено</div>
+            <div class="analytics-value">${done}</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">дневные/недельные</div>
+            <div class="analytics-value">${dayGoals.length} / ${
+        weekGoals.length
+      }</div>
+          </div>
+          <div class="analytics-item">
+            <div class="analytics-label">месячные/без срока</div>
+            <div class="analytics-value">${monthGoals.length} / ${
+        noneGoals.length
+      }</div>
+          </div>
+        </div>
+        <div class="section-title" style="margin-top:8px;">
+          <span>Фокус на сегодня</span>
+        </div>
+        <div class="muted">
+          дневные активные: ${
+            dayGoals.filter((g) => !g.done).length
+          } · недельные активные: ${
+        weekGoals.filter((g) => !g.done).length
+      }
+        </div>
+      `;
+    }
+
+    // ===== ACHIEVEMENTS TAB =====
+
+    function renderAchievements() {
+      contentEl.innerHTML = "";
+
+      const card = document.createElement("section");
+      card.className = "card";
+      const stats = computeAchievementsStats();
+
+      card.innerHTML = `
+        <div class="card-header">
+          <div>
+            <div class="card-title">Достижения</div>
+            <div class="card-subtitle">принципы, подтверждённые действиями</div>
+          </div>
+        </div>
+        <div class="badge">
+          <div class="badge-header">
+            <div class="badge-title">Сделано, а не придумано</div>
+            <div class="badge-level">уровень ${stats.actionLevel}</div>
+          </div>
+          <div class="muted">
+            дни, когда были и доходы, и выполненные цели.
+          </div>
+        </div>
+        <div class="badge">
+          <div class="badge-header">
+            <div class="badge-title">Позже, но сделано</div>
+            <div class="badge-level">уровень ${stats.lateLevel}</div>
+          </div>
+          <div class="muted">
+            ежемесячные цели, закрытые с задержкой, но не проваленные.
+          </div>
+        </div>
+        <div class="badge">
+          <div class="badge-header">
+            <div class="badge-title">Без свидетелей, но честно</div>
+            <div class="badge-level">уровень ${stats.honestLevel}</div>
+          </div>
+          <div class="muted">
+            мануальные правки баланса с последующим выравниванием по операциям.
+          </div>
+        </div>
+      `;
+      contentEl.appendChild(card);
+    }
+
+    function computeAchievementsStats() {
+      const today = todayISO();
+      const last30 = [];
+      for (let i = 29; i >= 0; i--) {
+        last30.push(addDaysISO(today, -i));
+      }
+      const txByDay = {};
+      for (const tx of state.transactions) {
+        if (!txByDay[tx.dateISO]) txByDay[tx.dateISO] = [];
+        txByDay[tx.dateISO].push(tx);
+      }
+      const goalsByDay = {};
+      for (const g of state.goals) {
+        if (!g.done) continue;
+        const day = g.createdISO || today;
+        if (!goalsByDay[day]) goalsByDay[day] = [];
+        goalsByDay[day].push(g);
+      }
+      let actionDays = 0;
+      last30.forEach((d) => {
+        const txs = txByDay[d] || [];
+        const hasIncome = txs.some((t) => t.type === "income");
+        const hasGoal = (goalsByDay[d] || []).length > 0;
+        if (hasIncome && hasGoal) actionDays += 1;
+      });
+      const untracked = Math.abs(
+        state.balance - expectedBalanceFromTx()
+      );
+      const actionLevel =
+        actionDays >= 20 ? 3 : actionDays >= 10 ? 2 : actionDays >= 3 ? 1 : 0;
+      const lateLevel = 0; // можно развить отдельно, пока заглушка
+      const honestLevel =
+        untracked === 0 ? 2 : untracked < 500 ? 1 : 0;
+      return { actionLevel, lateLevel, honestLevel };
+    }
+
+    // ===== SETTINGS SHEET =====
+
+    function openSettingsSheet() {
+      const json = JSON.stringify(state, null, 2);
+      openSheet(
+        "Настройки",
+        `
+        <div class="field-group">
+          <div class="field-label">Тема</div>
+          <select id="theme-select" class="field-select">
+            <option value="auto">авто</option>
+            <option value="dark">тёмная</option>
+            <option value="light">светлая</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Шаблоны расходов</div>
+          <div id="tmpl-list"></div>
+          <button class="btn btn-small btn-outline" id="tmpl-add">+ шаблон</button>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Теги</div>
+          <div id="tag-list"></div>
+          <button class="btn btn-small btn-outline" id="tag-add">+ тег</button>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Экспорт</div>
+          <textarea class="mono" readonly id="export-json">${json}</textarea>
+          <button class="btn btn-small btn-outline" id="export-copy">скопировать</button>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Импорт</div>
+          <textarea class="mono" id="import-json" placeholder="вставь сохранённый JSON и нажми &quot;импортировать&quot;"></textarea>
+          <button class="btn btn-small btn-ghost" id="import-apply">импортировать</button>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Очистка</div>
+          <button class="btn btn-ghost" id="btn-clear-all">очистить все данные</button>
+        </div>
+      `
+      );
+      const themeSelect = document.getElementById("theme-select");
+      themeSelect.value = themeMode;
+      themeSelect.addEventListener("change", () => {
+        saveThemeMode(themeSelect.value);
+      });
+
+      const tmplList = document.getElementById("tmpl-list");
+      function renderTmpl() {
+        if (!state.expenseTemplates.length) {
+          tmplList.innerHTML = `<div class="empty">шаблонов пока нет</div>`;
+        } else {
+          tmplList.innerHTML = state.expenseTemplates
+            .map(
+              (t) => `
+            <div class="tx-item">
+              <div class="tx-main">
+                <span>${t.title}</span>
+                <span class="tx-amount expense">${t.amount.toLocaleString(
+                  "ru-RU"
+                )} ₽</span>
+              </div>
+              <div class="tx-meta">
+                <button class="btn btn-small btn-outline" data-del-tmpl="${
+                  t.id
+                }">удалить</button>
+              </div>
+            </div>
+          `
+            )
+            .join("");
+        }
+      }
+      renderTmpl();
+
+      tmplList.addEventListener("click", (e) => {
+        const del = e.target.closest("[data-del-tmpl]");
+        if (!del) return;
+        const id = del.getAttribute("data-del-tmpl");
+        state.expenseTemplates = state.expenseTemplates.filter(
+          (t) => t.id !== id
+        );
+        saveState();
+        renderTmpl();
+      });
+
+      document
+        .getElementById("tmpl-add")
+        .addEventListener("click", () => {
+          const title = prompt("Название шаблона", "Транспорт");
+          if (!title) return;
+          const amountStr = prompt("Сумма, ₽", "74");
+          if (!amountStr) return;
+          const val = parseFloat(amountStr.replace(",", "."));
+          if (!val || val <= 0) return;
+          state.expenseTemplates.push({
+            id: uuid(),
+            title: title.trim(),
+            amount: Math.round(val)
+          });
+          saveState();
+          renderTmpl();
+        });
+
+      const tagList = document.getElementById("tag-list");
+      function renderTags() {
+        if (!state.tagConfig.length) {
+          tagList.innerHTML = `<div class="empty">тегов пока нет</div>`;
+        } else {
+          tagList.innerHTML = state.tagConfig
+            .map(
+              (t) => `
+            <div class="tx-item">
+              <div class="tx-main">
+                <span>${t.icon || ""} #${t.name}</span>
+                <span class="muted">${t.color || ""}</span>
+              </div>
+              <div class="tx-meta">
+                <button class="btn btn-small btn-outline" data-del-tag="${
+                  t.id
+                }">удалить</button>
+              </div>
+            </div>
+          `
+            )
+            .join("");
+        }
+      }
+      renderTags();
+
+      tagList.addEventListener("click", (e) => {
+        const del = e.target.closest("[data-del-tag]");
+        if (!del) return;
+        const id = del.getAttribute("data-del-tag");
+        state.tagConfig = state.tagConfig.filter((t) => t.id !== id);
+        saveState();
+        renderTags();
+      });
+
+      document.getElementById("tag-add").addEventListener("click", () => {
+        const name = prompt("Название тега (без #)", "транспорт");
+        if (!name) return;
+        const icon = prompt(
+          "Иконка (эмодзи, опционально)",
+          "🚌"
+        );
+        const color = prompt(
+          "Цвет (например, green, #22c55e — опционально)",
+          ""
+        );
+        state.tagConfig.push({
+          id: uuid(),
+          name: name.trim(),
+          icon: icon || "",
+          color: color || ""
+        });
+        saveState();
+        renderTags();
+      });
+
+      document
+        .getElementById("export-copy")
+        .addEventListener("click", async () => {
+          const area = document.getElementById("export-json");
+          try {
+            if (navigator.clipboard?.writeText) {
+              await navigator.clipboard.writeText(area.value);
+            } else {
+              area.focus();
+              area.select();
+            }
+          } catch (e) {
+            area.focus();
+            area.select();
+          }
+        });
+
+      document
+        .getElementById("import-apply")
+        .addEventListener("click", () => {
+          const raw = document
+            .getElementById("import-json")
+            .value.trim();
+          if (!raw) return;
+          let parsed;
+          try {
+            parsed = JSON.parse(raw);
+          } catch (e) {
+            alert("Некорректный JSON");
+            return;
+          }
+          if (!confirm("Перезаписать текущее состояние?")) return;
+          state = { ...structuredClone(defaultState), ...parsed };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+          state = loadState();
+          render();
+          closeSheet();
+        });
+
+      document
+        .getElementById("btn-clear-all")
+        .addEventListener("click", () => {
+          if (!confirm("Точно удалить все данные?")) return;
+          localStorage.removeItem(STORAGE_KEY);
+          state = loadState();
+          render();
+          closeSheet();
+        });
+    }
+
+    // initial render
     render();
   </script>
 </body>
